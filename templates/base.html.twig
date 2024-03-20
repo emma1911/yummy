@@ -12,7 +12,7 @@
 		<meta content="" name="keywords">
 
 		<!-- Favicons -->
-		<link href="{{asset('Yummy/assets/img/logo.jpg')}}" rel="icon">
+		<link href="{{asset('Yummy/assets/img/logo.png')}}" rel="icon">
 		<link href="{{asset('Yummy/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
 		<!-- Google Fonts -->
@@ -45,7 +45,6 @@
 	</head>
 
 	<body>
-	<h4>test</h4>
         {% block body %}
 		<!-- ======= Header ======= -->
 		<header id="header" class="header fixed-top d-flex align-items-center">
@@ -66,10 +65,6 @@
 						</li>
 						<li>
 							<a href="#menu">Menu</a>
-						</li>
-						
-						<li>
-							<a href="#chefs">Chefs</a>
 						</li>
 						<li>
 							<a href="#gallery">Gallery</a>
@@ -168,7 +163,66 @@
 			</section>
 			<!-- End About Section -->
 
-		
+			<!-- ======= Why Us Section ======= -->
+			<section id="why-us" class="why-us section-bg">
+				<div class="container" data-aos="fade-up">
+
+					<div class="row gy-4">
+
+						<div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+							<div class="why-box">
+								<h3>Why Choose Yummy?</h3>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+									                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+								</p>
+								<div class="text-center">
+									<a href="#" class="more-btn">Learn More
+										<i class="bx bx-chevron-right"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+						<!-- End Why Box -->
+
+						<div class="col-lg-8 d-flex align-items-center">
+							<div class="row gy-4">
+
+								<div class="col-xl-4" data-aos="fade-up" data-aos-delay="200">
+									<div class="icon-box d-flex flex-column justify-content-center align-items-center">
+										<i class="bi bi-clipboard-data"></i>
+										<h4>Corporis voluptates officia eiusmod</h4>
+										<p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+									</div>
+								</div>
+								<!-- End Icon Box -->
+
+								<div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
+									<div class="icon-box d-flex flex-column justify-content-center align-items-center">
+										<i class="bi bi-gem"></i>
+										<h4>Ullamco laboris ladore pan</h4>
+										<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+									</div>
+								</div>
+								<!-- End Icon Box -->
+
+								<div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
+									<div class="icon-box d-flex flex-column justify-content-center align-items-center">
+										<i class="bi bi-inboxes"></i>
+										<h4>Labore consequatur incidid dolore</h4>
+										<p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+									</div>
+								</div>
+								<!-- End Icon Box -->
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+			<!-- End Why Us Section -->
 
 			<!-- ======= Stats Counter Section ======= -->
 			<section id="stats-counter" class="stats-counter" style ="text-aline:center;"v>
@@ -176,7 +230,7 @@
 
 					<div class="row gy-4" >
 
-						<div class="col-lg-3 col-md-6" style="margin-left:40%">
+						<div class="col-lg-3 col-md-6" style="margin-left:35%">
 							<div class="stats-item text-center w-100 h-100" >
 								<span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
 								<p>Clients</p>
@@ -716,109 +770,6 @@
 			</section>
 			<!-- End Testimonials Section -->
 
-			<!-- ======= Chefs Section ======= -->
-			<section id="chefs" class="chefs section-bg">
-				<div class="container" data-aos="fade-up">
-
-					<div class="section-header">
-						<h2>Chefs</h2>
-						<p>Our
-							<span>Proffesional</span>
-							Chefs</p>
-					</div>
-
-					<div class="row gy-4">
-
-						<div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-							<div class="chef-member">
-								<div class="member-img">
-									<img src="{{asset('Yummy/assets//img/chefs/chefs-1.jpg')}}" class="img-fluid" alt="">
-									<div class="social">
-										<a href="">
-											<i class="bi bi-twitter"></i>
-										</a>
-										<a href="">
-											<i class="bi bi-facebook"></i>
-										</a>
-										<a href="">
-											<i class="bi bi-instagram"></i>
-										</a>
-										<a href="">
-											<i class="bi bi-linkedin"></i>
-										</a>
-									</div>
-								</div>
-								<div class="member-info">
-									<h4>Walter White</h4>
-									<span>Master Chef</span>
-									<p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
-								</div>
-							</div>
-						</div>
-						<!-- End Chefs Member -->
-
-						<div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-							<div class="chef-member">
-								<div class="member-img">
-									<img src="{{asset('Yummy/assets//img/chefs/chefs-2.jpg')}}" class="img-fluid" alt="">
-									<div class="social">
-										<a href="">
-											<i class="bi bi-twitter"></i>
-										</a>
-										<a href="">
-											<i class="bi bi-facebook"></i>
-										</a>
-										<a href="">
-											<i class="bi bi-instagram"></i>
-										</a>
-										<a href="">
-											<i class="bi bi-linkedin"></i>
-										</a>
-									</div>
-								</div>
-								<div class="member-info">
-									<h4>Sarah Jhonson</h4>
-									<span>Patissier</span>
-									<p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
-								</div>
-							</div>
-						</div>
-						<!-- End Chefs Member -->
-
-						<div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-							<div class="chef-member">
-								<div class="member-img">
-									<img src="{{asset('Yummy/assets//img/chefs/chefs-3.jpg')}}" class="img-fluid" alt="">
-									<div class="social">
-										<a href="">
-											<i class="bi bi-twitter"></i>
-										</a>
-										<a href="">
-											<i class="bi bi-facebook"></i>
-										</a>
-										<a href="">
-											<i class="bi bi-instagram"></i>
-										</a>
-										<a href="">
-											<i class="bi bi-linkedin"></i>
-										</a>
-									</div>
-								</div>
-								<div class="member-info">
-									<h4>William Anderson</h4>
-									<span>Cook</span>
-									<p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
-								</div>
-							</div>
-						</div>
-						<!-- End Chefs Member -->
-
-					</div>
-
-				</div>
-			</section>
-			<!-- End Chefs Section -->
-
 			<!-- ======= Book A Table Section ======= -->
 			<section id="book-a-table" class="book-a-table">
 				<div class="container" data-aos="fade-up">
@@ -835,7 +786,7 @@
 						<div class="col-lg-4 reservation-img" style="background-image: url(Yummy/assets/img/reservation.jpg);" data-aos="zoom-out" data-aos-delay="200"></div>
 
 						<div class="col-lg-8 d-flex align-items-center reservation-form-bg">
-							<form action="forms/book-a-table.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+							<form action="Yummy/forms/book-a-table.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
 								<div class="row gy-4">
 									<div class="col-lg-4 col-md-6">
 										<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
@@ -952,7 +903,7 @@
 								<i class="icon bi bi-map flex-shrink-0"></i>
 								<div>
 									<h3>Our Address</h3>
-									<p>A108 Adam Street, New York, NY 535022</p>
+									<p>Avenue hadj ali soua, Ksar Hellal, Monastir, Tunisia</p>
 								</div>
 							</div>
 						</div>
@@ -963,7 +914,7 @@
 								<i class="icon bi bi-envelope flex-shrink-0"></i>
 								<div>
 									<h3>Email Us</h3>
-									<p>contact@example.com</p>
+									<p>thewiserestaurantandbrunch@gmail.com</p>
 								</div>
 							</div>
 						</div>
@@ -974,7 +925,7 @@
 								<i class="icon bi bi-telephone flex-shrink-0"></i>
 								<div>
 									<h3>Call Us</h3>
-									<p>+1 5589 55488 55</p>
+									<p>+216 52 555 400</p>
 								</div>
 							</div>
 						</div>
@@ -1041,9 +992,9 @@
 						<div>
 							<h4>Address</h4>
 							<p>
-								A108 Adam Street
+								Avenue hadj ali soua
 								<br>
-								New York, NY 535022 - US<br>
+								Ksar Hellal, Monastir, Tunisia<br>
 							</p>
 						</div>
 
@@ -1055,9 +1006,9 @@
 							<h4>Reservations</h4>
 							<p>
 								<strong>Phone:</strong>
-								+1 5589 55488 55<br>
+								+216 52 555 400<br>
 								<strong>Email:</strong>
-								info@example.com<br>
+								thewiserestaurantandbrunch@gmail.com<br>
 							</p>
 						</div>
 					</div>
@@ -1077,18 +1028,13 @@
 					<div class="col-lg-3 col-md-6 footer-links">
 						<h4>Follow Us</h4>
 						<div class="social-links d-flex">
-							<a href="#" class="twitter">
-								<i class="bi bi-twitter"></i>
-							</a>
-							<a href="#" class="facebook">
+							<a href="{{asset('https://www.facebook.com/profile.php?id=100058908593379')}}" class="facebook">
 								<i class="bi bi-facebook"></i>
 							</a>
-							<a href="#" class="instagram">
+							<a href="{{asset('https://www.instagram.com/the_wise_restaurant/')}}" class="instagram">
 								<i class="bi bi-instagram"></i>
 							</a>
-							<a href="#" class="linkedin">
-								<i class="bi bi-linkedin"></i>
-							</a>
+							
 						</div>
 					</div>
 
