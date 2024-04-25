@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ServeurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ServeurRepository::class)]
@@ -24,6 +26,14 @@ class Serveur
 
     #[ORM\Column]
     private ?int $phone = null;
+
+    #[ORM\OneToMany(targetEntity: Admin::class, mappedBy: 'serveur')]
+    private Collection $admins;
+
+    public function __construct()
+    {
+        $this->admins = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +84,36 @@ class Serveur
     public function setPhone(int $phone): static
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Admin>
+     */
+    public function getAdmins(): Collection
+    {
+        return $this->admins;
+    }
+
+    public function addAdmin(Admin $admin): static
+    {
+        if (!$this->admins->contains($admin)) {
+            $this->admins->add($admin);
+            $admin->setServeur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdmin(Admin $admin): static
+    {
+        if ($this->admins->removeElement($admin)) {
+            // set the owning side to null (unless already changed)
+            if ($admin->getServeur() === $this) {
+                $admin->setServeur(null);
+            }
+        }
 
         return $this;
     }

@@ -30,6 +30,10 @@ class Admin
     #[ORM\JoinColumn(nullable: false)]
     private ?Restoinformation $restoinformation = null;
 
+    #[ORM\ManyToOne(inversedBy: 'admins')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Serveur $serveur = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,6 +95,18 @@ class Admin
     public function setRestoinformation(Restoinformation $restoinformation): static
     {
         $this->restoinformation = $restoinformation;
+
+        return $this;
+    }
+
+    public function getServeur(): ?Serveur
+    {
+        return $this->serveur;
+    }
+
+    public function setServeur(?Serveur $serveur): static
+    {
+        $this->serveur = $serveur;
 
         return $this;
     }
