@@ -31,6 +31,9 @@ class Restoinformation
     #[ORM\Column(length: 255)]
     private ?string $photo = null;
 
+    #[ORM\OneToOne(mappedBy: 'restoinformation', cascade: ['persist', 'remove'])]
+    private ?Admin $admis = null;
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -107,4 +110,24 @@ class Restoinformation
 
         return $this;
     }
+
+    public function getAdmis(): ?Admin
+    {
+        return $this->admis;
+    }
+
+    public function setAdmis(Admin $admis): static
+    {
+        // set the owning side of the relation if necessary
+        if ($admis->getRestoinformation() !== $this) {
+            $admis->setRestoinformation($this);
+        }
+
+        $this->admis = $admis;
+
+        return $this;
+    }
+
+
+    
 }

@@ -23,7 +23,7 @@ class Serveur
     private ?string $email = null;
 
     #[ORM\Column]
-    private ?int $number = null;
+    private ?int $phone = null;
 
     public function getId(): ?int
     {
@@ -66,14 +66,14 @@ class Serveur
         return $this;
     }
 
-    public function getNumber(): ?int
+    public function getPhone(): ?int
     {
-        return $this->number;
+        return $this->phone;
     }
 
-    public function setNumber(int $number): static
+    public function setPhone(int $phone): static
     {
-        $this->number = $number;
+        $this->phone = $phone;
 
         return $this;
     }

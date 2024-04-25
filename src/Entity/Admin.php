@@ -15,34 +15,46 @@ class Admin
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?string $nom = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $prenom = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $prenom = null;
+    #[ORM\Column]
+    private ?int $phone = null;
+
+    #[ORM\OneToOne(inversedBy: 'admis', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Restoinformation $restoinformation = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id): static
+    public function getNom(): ?string
     {
-        $this->id = $id;
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): static
+    {
+        $this->nom = $nom;
 
         return $this;
     }
 
-    public function getName(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->name;
+        return $this->prenom;
     }
 
-    public function setName(string $name): static
+    public function setPrenom(string $prenom): static
     {
-        $this->name = $name;
+        $this->prenom = $prenom;
 
         return $this;
     }
@@ -59,14 +71,26 @@ class Admin
         return $this;
     }
 
-    public function getPrenom(): ?string
+    public function getPhone(): ?int
     {
-        return $this->prenom;
+        return $this->phone;
     }
 
-    public function setPrenom(string $prenom): static
+    public function setPhone(int $phone): static
     {
-        $this->prenom = $prenom;
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getRestoinformation(): ?Restoinformation
+    {
+        return $this->restoinformation;
+    }
+
+    public function setRestoinformation(Restoinformation $restoinformation): static
+    {
+        $this->restoinformation = $restoinformation;
 
         return $this;
     }
