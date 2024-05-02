@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Repository;
-
+use App\Entity\Client;
 use App\Entity\Comment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @extends ServiceEntityRepository<Comment>
@@ -16,10 +17,33 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CommentRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    private $entityManager;
+
+    public function __construct(ManagerRegistry $registry, EntityManagerInterface $entityManager)
     {
         parent::__construct($registry, Comment::class);
+        $this->entityManager = $entityManager;
     }
+
+    public function getNameOfClient()
+    {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+
+        $query = $queryBuilder
+            ->select('client.full_name')
+            ->from(Client::class, 'client') // Use Client::class instead of ClientRepository::class
+            ->join('client.id', 'comment')
+            ->where($queryBuilder->expr()->eq('comment.id', ':comment'))
+            ->setParameter('comment', 'your_comment_here')
+            ->getQuery();
+
+        $result = $query->getResult();
+
+        // Handle $result as needed
+
+        return $result;
+    }
+}
 
     //    /**
     //     * @return Comment[] Returns an array of Comment objects
@@ -45,4 +69,3 @@ class CommentRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
-}

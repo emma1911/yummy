@@ -6,3 +6,8 @@
         {{ c.message}}
     {% endfor %}
 {% endblock %}
+{% block client_name_comment %}
+    {% for nc in nameComments %}
+        {{ nc.id}}
+    {% endfor %}
+{% endblock %}
