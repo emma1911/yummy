@@ -13,19 +13,62 @@
             You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
+<section class="signin-page account">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="block text-center">
+          <a class="logo" href="index.html">
+            <img src="images/logo.png" alt="">
+          </a>
+          <h2 class="text-center">Welcome Back</h2>
+          <form class="text-left clearfix"  >
+            <div class="form-group">
+            <label for="inputEmail">Email <span class="text-danger">*</span></label>
+              <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"  placeholder="Email" autocomplete="email" required autofocus >
+            </div>
+            <br>
+            <div class="form-group">
+            <label for="inputPassword">Password <span class="text-danger">*</span></label>
+              <input type="password"  name="password" id="inputPassword" class="form-control" autocomplete="current-password" required placeholder="Password">
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-main text-center" >Sign in</button>
+            </div>
+          </form>
+          <p class="mt-20">New in this site ?<a href="{{path('app_register')}}"> Create New Account</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <!--<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     <label for="inputEmail">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
     <label for="inputPassword">Password</label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
     <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+           value="{{ csrf_token('authenticate') }}">
+
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" name="_remember_me"> Remember me
+        </label>
+    </div>
 
     <button class="btn btn-lg btn-primary" type="submit">
         Sign in
-    </button>
+    </button>-->
 </form>
+<br>
+<br>
+<br>
 {% endblock %}
