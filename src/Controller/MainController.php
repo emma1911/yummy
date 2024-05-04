@@ -11,7 +11,7 @@ class MainController extends AbstractController
     #[Route('/', name: 'app_index')]
     public function index(CommentRepository $commentRepository): Response
     {
-        $comments = $commentRepository->findAll();
+        $comments = $commentRepository->getNameCommentClient();
         return $this->render('main/index.html.twig',['controller_name' => 'MainController', 'comments' => $comments]);
     }
 
