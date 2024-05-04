@@ -46,7 +46,7 @@
 
 	<body>
         {% block body %}
-		<!-- ======= Header ======= -->
+		<!-- ======= Header + navbar ======= -->
 		<header id="header" class="header fixed-top d-flex align-items-center">
 			<div class="container d-flex align-items-center justify-content-between">
 
@@ -222,9 +222,9 @@
 
 					</ul>
 					<!-- End tab nav item -->
-
+					
 					<div class="tab-content" data-aos="fade-up" data-aos-delay="300">
-
+						<!-- Starter Menu Content -->
 						<div class="tab-pane fade active show" id="menu-starters">
 
 							<div class="tab-header text-center">
@@ -238,7 +238,7 @@
 									<a href="{{asset('Yummy/assets/img/menu/menu-item-1.png')}}" class="glightbox"><img src="{{asset('Yummy/assets//img/menu/menu-item-1.png')}}" class="menu-img img-fluid" alt=""></a>
 									<h4>Magnam Tiste</h4>
 									<p class="ingredients">
-										Lorem, deren, trataro, filede, nerada
+										description
 									</p>
 									<p class="price">
 										$5.95
@@ -248,7 +248,8 @@
 							</div>
 						</div>
 						<!-- End Starter Menu Content -->
-
+						
+						<!-- Breakfast Menu Content -->
 						<div class="tab-pane fade" id="menu-breakfast">
 
 							<div class="tab-header text-center">
@@ -274,6 +275,7 @@
 						</div>
 						<!-- End Breakfast Menu Content -->
 
+						<!-- Lunch Menu Content -->
 						<div class="tab-pane fade" id="menu-lunch">
 
 							<div class="tab-header text-center">
@@ -303,6 +305,7 @@
 						</div>
 						<!-- End Lunch Menu Content -->
 
+						<!-- Dinner Menu Content -->
 						<div class="tab-pane fade" id="menu-dinner">
 
 							<div class="tab-header text-center">
