@@ -73,6 +73,9 @@
 						<li>
 							<a href="#contact">Contact</a>
 						</li>
+						<li>
+							<a href="{{path('app_login')}}">Login</a>
+						</li>
 					</ul>
 				</nav>
 				<!-- .navbar -->
@@ -415,21 +418,24 @@
 
 					<div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<div class="testimonial-item">
-									<div class="row gy-4 justify-content-center">
-										<div class="col-lg-6">
-											<div class="testimonial-content">
-												<p>
-													<i class="bi bi-quote quote-icon-left"></i>
-													<i class="bi bi-quote quote-icon-right"></i>
-												</p>
-												<h5></h5>
-											</div>
+							
+						<div class="swiper-slide">
+							<div class="testimonial-item">
+								<div class="row gy-4 justify-content-center">
+									<div class="col-lg-6">
+										<div class="testimonial-content">
+											<p>
+												<i class="bi bi-quote quote-icon-left"></i>
+											
+												<i class="bi bi-quote quote-icon-right"></i>
+											</p>
+											<h5></h5>
 										</div>
 									</div>
 								</div>
 							</div>
+						</div>
+					
 						</div>
 						<div class="swiper-pagination"></div>
 					</div>
@@ -452,7 +458,7 @@
 
 					<div class="mb-3">
 						<iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
-					</div>
+					</div>                                      <!--https://maps.app.goo.gl/1iUKiXdQmnRpjiBV9-->
 					<!-- End Google Maps -->
 
 					<div class="row gy-4">
@@ -505,7 +511,6 @@
 							</div>
 						</div>
 						<!-- End Info Item -->
-
 					</div>
 
 					<form action="forms/contact.php" method="post" role="form" class="php-email-form p-3 p-md-4">
@@ -537,7 +542,56 @@
 				</div>
 			</section>
 			<!-- End Contact Section -->
+			<!-- container -->
+			<section id="signin" class="signin">
+			<div class="container">
+			<div class="row">
+				
+				<!-- Article main content -->
+				<article class="col-xs-12 maincontent">
+					<header class="page-header">
+						<h1 class="page-title">Sign in</h1>
+					</header>
+					
+					<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<h3 class="thin text-center">Sign in to your account</h3>
+								<p class="text-center text-muted">Lorem ipsum dolor sit amet, <a href="signup.html">Register</a> adipisicing elit. Quo nulla quibusdam cum doloremque incidunt nemo sunt a tenetur omnis odio. </p>
+								<hr>
+								
+								<form>
+									<div class="top-margin">
+										<label>Username/Email <span class="text-danger">*</span></label>
+										<input type="text" class="form-control">
+									</div>
+									<div class="top-margin">
+										<label>Password <span class="text-danger">*</span></label>
+										<input type="password" class="form-control">
+									</div>
 
+									<hr>
+
+									<div class="row">
+										<div class="col-lg-8">
+											<b><a href="">Forgot password?</a></b>
+										</div>
+										<div class="col-lg-4 text-right">
+											<button class="btn btn-action" type="submit">Sign in</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+
+					</div>
+					
+				</article>
+				<!-- /Article -->
+
+			</div>
+		</div>	<!-- /container -->
+		</section>
 		</main>
 		<!-- End #main -->
 		{% endblock %}
