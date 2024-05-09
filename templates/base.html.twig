@@ -73,6 +73,16 @@
 						<li>
 							<a href="#contact">Contact</a>
 						</li>
+						{% if app.user %}
+								<li>
+									<a href="{{ path('app_logout') }}">Logout</a>
+								</li>
+							{% else %}
+								<li>
+									<a href="{{ path('app_login') }}">Login</a>
+								</li>
+							{% endif %}
+						
 					</ul>
 				</nav>
 				<!-- .navbar -->
@@ -388,9 +398,15 @@
 									<div class="error-message"></div>
 									<div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
 								</div>
-								<div class="text-center">
-									<button type="submit">Book a Table</button>
-								</div>
+								{% if app.user %}
+										<div class="text-center">
+											<button type="submit">Book a Table</button>
+										</div>
+									{% else %}
+										<div class="text-center">
+											<a href="{{ path('app_login') }}"><button type="submit">Book a Table</button></a>
+										</div>
+									{% endif %}
 							</form>
 						</div>
 						<!-- End Reservation Form -->

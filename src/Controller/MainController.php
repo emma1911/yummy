@@ -9,10 +9,9 @@ use Symfony\Component\Routing\Attribute\Route;
 class MainController extends AbstractController
 {
     #[Route('/', name: 'app_index')]
-    public function index(CommentRepository $commentRepository): Response
+    public function index(): Response
     {
-        $comments = $commentRepository->getNameCommentClient();
-        return $this->render('main/index.html.twig',['controller_name' => 'MainController', 'comments' => $comments]);
+        return $this->render('main/index.html.twig',['controller_name' => 'MainController',]);
     }
 
 }
