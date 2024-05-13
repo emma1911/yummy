@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -32,6 +34,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\ManyToMany(targetEntity: Comment::class, inversedBy: 'users')]
+    private Collection $user_comment;
+
+    #[ORM\OneToMany(targetEntity: Date::class, mappedBy: 'user')]
+    private Collection $dates;
+
+    public function __construct()
+    {
+        $this->user_comment = new ArrayCollection();
+        $this->dates = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -106,5 +120,59 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, Comment>
+     */
+    public function getUserComment(): Collection
+    {
+        return $this->user_comment;
+    }
+
+    public function addUserComment(Comment $userComment): static
+    {
+        if (!$this->user_comment->contains($userComment)) {
+            $this->user_comment->add($userComment);
+        }
+
+        return $this;
+    }
+
+    public function removeUserComment(Comment $userComment): static
+    {
+        $this->user_comment->removeElement($userComment);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Date>
+     */
+    public function getDates(): Collection
+    {
+        return $this->dates;
+    }
+
+    public function addDate(Date $date): static
+    {
+        if (!$this->dates->contains($date)) {
+            $this->dates->add($date);
+            $date->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDate(Date $date): static
+    {
+        if ($this->dates->removeElement($date)) {
+            // set the owning side to null (unless already changed)
+            if ($date->getUser() === $this) {
+                $date->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

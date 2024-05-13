@@ -35,9 +35,13 @@ class Command
     #[ORM\JoinColumn(nullable: false)]
     private ?Shef $shef = null;
 
+    #[ORM\OneToMany(targetEntity: Date::class, mappedBy: 'command')]
+    private Collection $dates;
+
     public function __construct()
     {
         $this->serveurs = new ArrayCollection();
+        $this->dates = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,6 +132,36 @@ class Command
     public function setShef(?Shef $shef): static
     {
         $this->shef = $shef;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Date>
+     */
+    public function getDates(): Collection
+    {
+        return $this->dates;
+    }
+
+    public function addDate(Date $date): static
+    {
+        if (!$this->dates->contains($date)) {
+            $this->dates->add($date);
+            $date->setCommand($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDate(Date $date): static
+    {
+        if ($this->dates->removeElement($date)) {
+            // set the owning side to null (unless already changed)
+            if ($date->getCommand() === $this) {
+                $date->setCommand(null);
+            }
+        }
 
         return $this;
     }
