@@ -42,7 +42,7 @@ class CommentController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_comment_show', methods: ['GET'])]
+    /*#[Route('/{id}', name: 'app_comment_show', methods: ['GET'])]
     public function show(Comment $comment): Response
     {
         return $this->render('comment/show.html.twig', [
@@ -77,5 +77,5 @@ class CommentController extends AbstractController
         }
 
         return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
-    }
+    }*/
 }
