@@ -3,8 +3,47 @@
 {% block title %}New Comment{% endblock %}
 
 {% block message %}
-    <h1>Create new Comment</h1>
 
     {{ include('comment/_form.html.twig') }}
 
+{% endblock %}
+
+{% block comment %}
+	<section id="comments" class="gallery section-bg">
+		<div class="container" data-aos="fade-up">
+
+			<div class="section-header">
+				<h2>Testimonials</h2>
+				<p>What Are They
+					<span>Saying About Us</span>
+				</p>
+			</div>
+
+			<div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
+				<div class="swiper-wrapper">
+					{% for c in comments %}
+						<div class="swiper-slide">
+							<div class="testimonial-item">
+								<div class="row gy-4 justify-content-center">
+									<div class="col-lg-6">
+										<div class="testimonial-content">
+											<p>
+												<i class="bi bi-quote quote-icon-left"></i>
+												{{ c.message }}
+												<i class="bi bi-quote quote-icon-right"></i>
+											</p>
+											<h5>{{ c.email }}</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+
+		</div>
+	</section>
 {% endblock %}

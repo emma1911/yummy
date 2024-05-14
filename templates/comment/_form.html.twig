@@ -1,4 +1,23 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{{ form_widget(form) }}
+{% if app.user %}
+	<div class="text-center">
+		<button class="btn">{{ button_label|default('Sent Comment') }}</button>
+	</div>
+	{{ form_end(form) }}
+{% else %}
+	<div class="alert alert-danger" role="alert">
+		You must be logged in to send a message.
+		<a href="{{path('app_login')}}">Login<a/>
+		</div>
+	{% endif %}
+
+	<script>
+		// Clear textarea content on page load
+        window.onload = function () {
+        var textarea = document.querySelector('textarea[name=" {{ form.message.vars.full_name }}"]');
+            if (textarea) {
+                textarea.value = '';
+            }
+        };
+	</script>

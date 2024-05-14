@@ -6,10 +6,11 @@ use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 class CommentController extends AbstractController
@@ -22,25 +23,37 @@ class CommentController extends AbstractController
         ]);
     }*/
     
+    private Security $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
     #[Route('/', name: 'app_comment_index', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, CommentRepository $commentRepository): Response
     {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Get the currently authenticated user
+            $user = $this->security->getUser();
+            // Set the user of the comment
+            $comment->setUser($user);
+
             $entityManager->persist($comment);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
         }
-
-        return $this->render('comment/new.html.twig', [
-            'comment' => $comment,
-            'form' => $form,
-        ]);
+        $comments = $commentRepository->getNameCommentUser();
+        return $this->render('comment/new.html.twig', ['comment' => $comment, 'form' => $form, 'comments' => $comments]);
     }
+
+
+    
 
    /* #[Route('/{id}', name: 'app_comment_show', methods: ['GET'])]
     public function show(Comment $comment): Response
