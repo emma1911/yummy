@@ -17,6 +17,7 @@ class Comment
     #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
 
+   
     public function getId(): ?int
     {
         return $this->id;
@@ -33,4 +34,5 @@ class Comment
 
         return $this;
     }
+
 }
