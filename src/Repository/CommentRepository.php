@@ -21,6 +21,15 @@ class CommentRepository extends ServiceEntityRepository
         parent::__construct($registry, Comment::class);
     }
 
+    public function getNameCommentUser()
+{
+    return $this->createQueryBuilder('c')
+        ->select('u.email, c.message')
+        ->leftJoin('c.user', 'u')
+        ->getQuery()
+        ->getResult();
+}
+
 //    /**
 //     * @return Comment[] Returns an array of Comment objects
 //     */
