@@ -21,6 +21,16 @@ class FooditemRepository extends ServiceEntityRepository
         parent::__construct($registry, Fooditem::class);
     }
 
+    public function findByTypeStart(): array
+    {
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.type = :type')
+            ->setParameter('type', 'start')
+            ->getQuery()
+            ->getResult();
+    }
+
+
     //    /**
     //     * @return Fooditem[] Returns an array of Fooditem objects
     //     */

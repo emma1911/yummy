@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\CommentRepository;
+use App\Repository\FooditemRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
@@ -31,7 +32,7 @@ class CommentController extends AbstractController
     }
 
     #[Route('/', name: 'app_comment_index', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, CommentRepository $commentRepository): Response
+    public function new(FooditemRepository $fooditemRepository,Request $request, EntityManagerInterface $entityManager, CommentRepository $commentRepository): Response
     {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
@@ -49,7 +50,8 @@ class CommentController extends AbstractController
             return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
         }
         $comments = $commentRepository->getNameCommentUser();
-        return $this->render('comment/new.html.twig', ['comment' => $comment, 'form' => $form, 'comments' => $comments]);
+        $items = $fooditemRepository->findByTypeStart();
+        return $this->render('comment/new.html.twig', ['comment' => $comment, 'form' => $form, 'comments' => $comments,'items' => $items]);
     }
 
 
