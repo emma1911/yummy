@@ -15,7 +15,7 @@ class CommentType extends AbstractType
         $builder
         ->add('message', TextareaType::class, [
             'label' => false, // Set label to false to hide it
-            'attr' => ['class' => 'form-control', 'rows' => 5, 'placeholder' => 'Message'],
+            'attr' => ['class' => 'form-control', 'rows' => 5, 'placeholder' => 'Comment'],
             'required' => true,
         ]);
     }
