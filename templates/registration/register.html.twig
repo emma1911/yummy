@@ -4,35 +4,53 @@
 
 {% block body %}
 
-				
-						<div class="panel-body" style="display: flex;
-                                                        justify-content: center;
-                                                        align-items: center;">
-                            {{ form_start(registrationForm) }}   
-							
-                                <h3 class="thin text-center">Register a new account</h3>
-                                <hr>
-                                <br>
-                                {{ form_errors(registrationForm) }}
-								
-                                {{ form_row(registrationForm.email) }}
-									
-								
-								<br>	
-                                {{ form_row(registrationForm.plainPassword, {
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{asset('Yummy/assets/css/style.css')}}"> 
+<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">The Wise</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-5">
+					<div class="login-wrap p-4 p-md-5" >
+		      	<div class="icon d-flex align-items-center justify-content-center" >
+		      		<span class="fa fa-user-o" ></span>
+		      	</div>
+                 {{ form_start(registrationForm) }}  
+		      	<h3 class="text-center mb-4" style="color: var(--red);">Register</h3>	
+		      	<div class="form-group">
+                    {{ form_row(registrationForm.email) }}
+		      	</div>
+	            <div class="form-group d-flex">
+                    {{ form_row(registrationForm.plainPassword, {
                                 label: 'Password'
                                 }) }}
-								<br>
-								{{ form_row(registrationForm.agreeTerms) }} 
-                                <br>                   
-                                <button class="btn btn-action" type="submit" style="background-color: #0f172a; 
-                                                                                    color: white;  
-                                                                                    padding: 10px;
-                                                                                    border: none;
-                                                                                    border-radius: 5px;
-                                                                                    cursor: pointer;">Register
-                                </button>							
-                            {{ form_end(registrationForm) }}
-						</div>
+	            </div>
+              <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+	            <div class="form-group d-md-flex">
+	            	<div class="w-50">
+	            		{{ form_row(registrationForm.agreeTerms) }} 
+					</div>
+					
+	            </div>
+	            <div class="form-group">
+	            	<button type="submit" class="btn btn-danger rounded submit p-3 px-5">Get Started</button>
+	            </div>
+	          {{ form_end(registrationForm) }}
+	        </div>
+				</div>
+			</div>
+		</div>
+	</section>
+    
+  <script src="{{asset('Yummy/assets/js/js/jquery.min.js')}}"></script>
+  <script src="{{asset('Yummy/assets/js/popper.js')}}"></script>
+  <script src="{{asset('Yummy/assets/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('Yummy/assets/js/main2.js')}}"></script>
+  {% endblock %}
+				
 
-        {% endblock %}
