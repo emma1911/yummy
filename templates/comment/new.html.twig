@@ -11,7 +11,52 @@
 
 {% block start %}
 	<div class="row gy-5">
-		{% for item in items %}
+		{% for item in itemStart %}
+			<div class="col-lg-4 menu-item">
+				<a href="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="glightbox"><img src="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="menu-img img-fluid" alt=""></a>
+				<h4>{{item.name_food}}</h4>
+				<p class="ingredients">{{item.description}}</p>
+				<p class="price">{{item.price}}$</p>
+			</div>
+		{% endfor %}
+		<!-- Menu Item -->
+	</div>
+
+{% endblock %}
+
+{% block breakfast %}
+	<div class="row gy-5">
+		{% for item in itemBreakfast %}
+			<div class="col-lg-4 menu-item">
+				<a href="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="glightbox"><img src="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="menu-img img-fluid" alt=""></a>
+				<h4>{{item.name_food}}</h4>
+				<p class="ingredients">{{item.description}}</p>
+				<p class="price">{{item.price}}$</p>
+			</div>
+		{% endfor %}
+		<!-- Menu Item -->
+	</div>
+
+{% endblock %}
+
+{% block lunch %}
+	<div class="row gy-5">
+		{% for item in itemLunch %}
+			<div class="col-lg-4 menu-item">
+				<a href="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="glightbox"><img src="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="menu-img img-fluid" alt=""></a>
+				<h4>{{item.name_food}}</h4>
+				<p class="ingredients">{{item.description}}</p>
+				<p class="price">{{item.price}}$</p>
+			</div>
+		{% endfor %}
+		<!-- Menu Item -->
+	</div>
+
+{% endblock %}
+
+{% block dinner %}
+	<div class="row gy-5">
+		{% for item in itemDinner %}
 			<div class="col-lg-4 menu-item">
 				<a href="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="glightbox"><img src="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="menu-img img-fluid" alt=""></a>
 				<h4>{{item.name_food}}</h4>

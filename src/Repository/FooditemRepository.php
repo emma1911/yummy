@@ -31,6 +31,36 @@ class FooditemRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findByTypeBreakfast(): array
+    {
+        return $this->createQueryBuilder('f')
+            ->select('f.photo', 'f.name_food', 'f.price', 'f.description')
+            ->where('f.type = :type')
+            ->setParameter('type', 'breakfast')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByTypeLunch(): array
+    {
+        return $this->createQueryBuilder('f')
+            ->select('f.photo', 'f.name_food', 'f.price', 'f.description')
+            ->where('f.type = :type')
+            ->setParameter('type', 'lunch')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByTypeDinner(): array
+    {
+        return $this->createQueryBuilder('f')
+            ->select('f.photo', 'f.name_food', 'f.price', 'f.description')
+            ->where('f.type = :type')
+            ->setParameter('type', 'dinner')
+            ->getQuery()
+            ->getResult();
+    }
+
 
     //    /**
     //     * @return Fooditem[] Returns an array of Fooditem objects

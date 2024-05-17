@@ -50,8 +50,18 @@ class CommentController extends AbstractController
             return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
         }
         $comments = $commentRepository->getNameCommentUser();
-        $items = $fooditemRepository->findByTypeStart();
-        return $this->render('comment/new.html.twig', ['comment' => $comment, 'form' => $form, 'comments' => $comments,'items' => $items]);
+        $itemStart = $fooditemRepository->findByTypeStart();
+        $itemBreakfast = $fooditemRepository->findByTypeBreakfast();
+        $itemLunch = $fooditemRepository->findByTypeLunch();
+        $itemDinner = $fooditemRepository->findByTypeDinner();
+
+        return $this->render('comment/new.html.twig', ['comment' => $comment, 
+                                                        'form' => $form, 
+                                                        'comments' => $comments,
+                                                        'itemStart' => $itemStart, 
+                                                        'itemBreakfast' => $itemBreakfast,
+                                                        'itemLunch' => $itemLunch,
+                                                        'itemDinner' => $itemDinner]);
     }
 
 
