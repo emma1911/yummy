@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Form\CommentType;
+use App\Repository\UserRepository;
 use App\Repository\CommentRepository;
 use App\Repository\FooditemRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -32,7 +33,7 @@ class CommentController extends AbstractController
     }
 
     #[Route('/', name: 'app_comment_index', methods: ['GET', 'POST'])]
-    public function new(FooditemRepository $fooditemRepository,Request $request, EntityManagerInterface $entityManager, CommentRepository $commentRepository): Response
+    public function new(UserRepository $userRepository,FooditemRepository $fooditemRepository,Request $request, EntityManagerInterface $entityManager, CommentRepository $commentRepository): Response
     {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
@@ -54,14 +55,15 @@ class CommentController extends AbstractController
         $itemBreakfast = $fooditemRepository->findByTypeBreakfast();
         $itemLunch = $fooditemRepository->findByTypeLunch();
         $itemDinner = $fooditemRepository->findByTypeDinner();
-
+        $users = $userRepository->countUsers();
         return $this->render('comment/new.html.twig', ['comment' => $comment, 
                                                         'form' => $form, 
                                                         'comments' => $comments,
                                                         'itemStart' => $itemStart, 
                                                         'itemBreakfast' => $itemBreakfast,
                                                         'itemLunch' => $itemLunch,
-                                                        'itemDinner' => $itemDinner]);
+                                                        'itemDinner' => $itemDinner,
+                                                        'users' => $users]);
     }
 
 
