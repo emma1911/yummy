@@ -29,6 +29,9 @@ class Fooditem
     #[ORM\JoinColumn(nullable: false)]
     private ?Admin $gerant = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $name_food = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Fooditem
     public function setGerant(?Admin $gerant): static
     {
         $this->gerant = $gerant;
+
+        return $this;
+    }
+
+    public function getNameFood(): ?string
+    {
+        return $this->name_food;
+    }
+
+    public function setNameFood(string $name_food): static
+    {
+        $this->name_food = $name_food;
 
         return $this;
     }

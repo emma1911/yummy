@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class MainController extends AbstractController
 {
-    #[Route('/test', name: 'app_index')]
+    #[Route('/', name: 'app_index')]
     public function index(FooditemRepository $fooditemRepository): Response
     {
         $items = $fooditemRepository->findByTypeStart();

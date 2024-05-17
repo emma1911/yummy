@@ -24,7 +24,8 @@ class FooditemRepository extends ServiceEntityRepository
     public function findByTypeStart(): array
     {
         return $this->createQueryBuilder('f')
-            ->andWhere('f.type = :type')
+            ->select('f.photo', 'f.name_food', 'f.price', 'f.description')
+            ->where('f.type = :type')
             ->setParameter('type', 'start')
             ->getQuery()
             ->getResult();

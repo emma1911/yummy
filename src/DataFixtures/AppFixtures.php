@@ -39,7 +39,7 @@ class AppFixtures extends Fixture
     {
         $imageNames = ['menu-item-1.png', 'menu-item-2.png', 'menu-item-3.png', 'menu-item-4.png', 'menu-item-5.png'];
         $type = ['start', 'breakfast', 'lunch', 'dinner'];
-
+        $foodName = ['spagetti','soup'];
         for ($i = 0; $i < 10; $i++) {
             $foodItem = new Fooditem();
             $foodItem->setPhoto($imageNames[array_rand($imageNames)]);
@@ -47,6 +47,7 @@ class AppFixtures extends Fixture
             $foodItem->setDescription('Default description');
             $foodItem->setType($type[array_rand($type)]);
             $foodItem->setGerant($admin); // Associate the admin with the food item
+            $foodItem->setNameFood($foodName[array_rand($foodName)]);
             $manager->persist($foodItem);
         }
     }
