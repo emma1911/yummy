@@ -54,8 +54,8 @@ class CommentController extends AbstractController
 
 
     
-
-   /* #[Route('/{id}', name: 'app_comment_show', methods: ['GET'])]
+/*
+   #[Route('/{id}', name: 'app_comment_show', methods: ['GET'])]
     public function show(Comment $comment): Response
     {
         return $this->render('comment/show.html.twig', [
@@ -78,10 +78,10 @@ class CommentController extends AbstractController
         return $this->render('comment/edit.html.twig', [
             'comment' => $comment,
             'form' => $form,
-        ]);
+        ]);/* 
     }
 
-    #[Route('/{id}', name: 'app_comment_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_comment_delete', methods: ['POST'])]
     public function delete(Request $request, Comment $comment, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->request->get('_token'))) {

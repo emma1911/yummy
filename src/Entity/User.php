@@ -35,16 +35,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\OneToMany(targetEntity: Date::class, mappedBy: 'user')]
-    private Collection $dates;
-
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'user')]
     private Collection $comments;
 
+    #[ORM\OneToMany(targetEntity: Command::class, mappedBy: 'user')]
+    private Collection $commands;
+
     public function __construct()
     {
-        $this->dates = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->commands = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -123,36 +123,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Date>
-     */
-    public function getDates(): Collection
-    {
-        return $this->dates;
-    }
-
-    public function addDate(Date $date): static
-    {
-        if (!$this->dates->contains($date)) {
-            $this->dates->add($date);
-            $date->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDate(Date $date): static
-    {
-        if ($this->dates->removeElement($date)) {
-            // set the owning side to null (unless already changed)
-            if ($date->getUser() === $this) {
-                $date->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Comment>
      */
     public function getComments(): Collection
@@ -176,6 +146,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($comment->getUser() === $this) {
                 $comment->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Command>
+     */
+    public function getCommands(): Collection
+    {
+        return $this->commands;
+    }
+
+    public function addCommand(Command $command): static
+    {
+        if (!$this->commands->contains($command)) {
+            $this->commands->add($command);
+            $command->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommand(Command $command): static
+    {
+        if ($this->commands->removeElement($command)) {
+            // set the owning side to null (unless already changed)
+            if ($command->getUser() === $this) {
+                $command->setUser(null);
             }
         }
 

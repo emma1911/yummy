@@ -20,6 +20,15 @@ class CommandRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Command::class);
     }
+    
+    public function getNameCommandUser()
+{
+    return $this->createQueryBuilder('c')
+        ->select('u.email, c.message')
+        ->leftJoin('c.user', 'u')
+        ->getQuery()
+        ->getResult();
+}
 
     //    /**
     //     * @return Command[] Returns an array of Command objects

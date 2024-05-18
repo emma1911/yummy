@@ -25,24 +25,15 @@ class Command
     #[ORM\Column]
     private ?int $nb_table = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $statue = null;
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date = null;
 
-    #[ORM\ManyToMany(targetEntity: Serveur::class, mappedBy: 'command_serveur')]
-    private Collection $serveurs;
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $time = null;
 
     #[ORM\ManyToOne(inversedBy: 'commands')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Shef $shef = null;
-
-    #[ORM\OneToMany(targetEntity: Date::class, mappedBy: 'command')]
-    private Collection $dates;
-
-    public function __construct()
-    {
-        $this->serveurs = new ArrayCollection();
-        $this->dates = new ArrayCollection();
-    }
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -85,84 +76,41 @@ class Command
         return $this;
     }
 
-    public function getStatue(): ?string
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->statue;
+        return $this->date;
     }
 
-    public function setStatue(string $statue): static
+    public function setDate(\DateTimeInterface $date): static
     {
-        $this->statue = $statue;
+        $this->date = $date;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Serveur>
-     */
-    public function getServeurs(): Collection
+    public function getTime(): ?\DateTimeInterface
     {
-        return $this->serveurs;
+        return $this->time;
     }
 
-    public function addServeur(Serveur $serveur): static
+    public function setTime(\DateTimeInterface $time): static
     {
-        if (!$this->serveurs->contains($serveur)) {
-            $this->serveurs->add($serveur);
-            $serveur->addCommandServeur($this);
-        }
+        $this->time = $time;
 
         return $this;
     }
 
-    public function removeServeur(Serveur $serveur): static
+    public function getUser(): ?User
     {
-        if ($this->serveurs->removeElement($serveur)) {
-            $serveur->removeCommandServeur($this);
-        }
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }
 
-    public function getShef(): ?Shef
-    {
-        return $this->shef;
-    }
 
-    public function setShef(?Shef $shef): static
-    {
-        $this->shef = $shef;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Date>
-     */
-    public function getDates(): Collection
-    {
-        return $this->dates;
-    }
-
-    public function addDate(Date $date): static
-    {
-        if (!$this->dates->contains($date)) {
-            $this->dates->add($date);
-            $date->setCommand($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDate(Date $date): static
-    {
-        if ($this->dates->removeElement($date)) {
-            // set the owning side to null (unless already changed)
-            if ($date->getCommand() === $this) {
-                $date->setCommand(null);
-            }
-        }
-
-        return $this;
-    }
 }

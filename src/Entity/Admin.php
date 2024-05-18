@@ -25,9 +25,6 @@ class Admin
     #[ORM\Column]
     private ?int $phone = null;
 
-    #[ORM\OneToMany(targetEntity: Serveur::class, mappedBy: 'gerant')]
-    private Collection $serveurs;
-
     #[ORM\OneToMany(targetEntity: Restoinformation::class, mappedBy: 'gerant')]
     private Collection $restoinformations;
 
@@ -36,7 +33,6 @@ class Admin
 
     public function __construct()
     {
-        $this->serveurs = new ArrayCollection();
         $this->restoinformations = new ArrayCollection();
         $this->fooditems = new ArrayCollection();
     }
@@ -78,36 +74,6 @@ class Admin
     public function setPhone(int $phone): static
     {
         $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Serveur>
-     */
-    public function getServeurs(): Collection
-    {
-        return $this->serveurs;
-    }
-
-    public function addServeur(Serveur $serveur): static
-    {
-        if (!$this->serveurs->contains($serveur)) {
-            $this->serveurs->add($serveur);
-            $serveur->setGerant($this);
-        }
-
-        return $this;
-    }
-
-    public function removeServeur(Serveur $serveur): static
-    {
-        if ($this->serveurs->removeElement($serveur)) {
-            // set the owning side to null (unless already changed)
-            if ($serveur->getGerant() === $this) {
-                $serveur->setGerant(null);
-            }
-        }
 
         return $this;
     }
