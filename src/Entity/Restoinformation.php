@@ -30,7 +30,7 @@ class Restoinformation
 
     #[ORM\ManyToOne(inversedBy: 'restoinformations')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Admin $gerant = null;
+    private ?User $gerant = null;
 
     public function getId(): ?int
     {
@@ -97,12 +97,12 @@ class Restoinformation
         return $this;
     }
 
-    public function getGerant(): ?Admin
+    public function getGerant(): ?User
     {
         return $this->gerant;
     }
 
-    public function setGerant(?Admin $gerant): static
+    public function setGerant(?User $gerant): static
     {
         $this->gerant = $gerant;
 

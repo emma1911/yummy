@@ -3,6 +3,89 @@
 {% block title %}The Wise
 {% endblock %}
 
+
+{% block about %}
+	{% for about in abouts %}
+		{% if is_granted('ROLE_ADMIN')%}
+			<center>
+				<a href="{{ path('app_about_edit', {'id': about.id}) }}">
+					<button type="button" class="btn btn-danger">Edit about</button>
+				</a>
+			</center>
+			<br>
+			<br>
+			<div class="row gy-4">
+				<div class="col-lg-7 position-relative about-img" style="background-image: url(Yummy/assets/img/about.jpg) ;" data-aos="fade-up" data-aos-delay="150">
+					<div class="call-us position-absolute">
+						<h4>Book a Table</h4>
+						<p>+{{about.phoneNumber}}</p>
+					</div>
+				</div>
+				<div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
+					<div class="content ps-0 ps-lg-5">
+						<p class="fst-italic">
+							Welcom to our restaurant here you can find all what you whant and the is some of our principal plats :
+						</p>
+							<ul>
+								<li>
+									<i class="bi bi-check2-all"></i>
+									{{ about.newFoodPlats }}
+								</li>
+							</ul>
+						<p>
+							Hope that you like it.
+						</p>
+
+						<div class="position-relative mt-4">
+							{% if about.vedioResto == null %}
+								<img src="{{asset('Yummy/assets/img/about-2.jpg')}}" class="img-fluid" alt="">
+							{% else %}
+								<img src="{{asset('Yummy/assets/img/about-2.jpg')}}" class="img-fluid" alt="">
+								<a href="{{asset(about.vedioResto)}}" class="glightbox play-btn"></a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% else %}
+			<div class="row gy-4">
+				<div class="col-lg-7 position-relative about-img" style="background-image: url(Yummy/assets/img/about.jpg) ;" data-aos="fade-up" data-aos-delay="150">
+					<div class="call-us position-absolute">
+						<h4>Book a Table</h4>
+						<p>+{{about.phoneNumber}}</p>
+					</div>
+				</div>
+				<div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
+					<div class="content ps-0 ps-lg-5">
+						<p class="fst-italic">
+							Welcom to our restaurant here you can find all what you whant and the is some of our principal plats :
+						</p>
+							<ul>
+								<li>
+									<i class="bi bi-check2-all"></i>
+									{{ about.newFoodPlats }}
+								</li>
+							</ul>
+						<p>
+							Hope that you like it.
+						</p>
+
+						<div class="position-relative mt-4">
+							{% if about.vedioResto == null %}
+								<img src="{{asset('Yummy/assets/img/about-2.jpg')}}" class="img-fluid" alt="">
+							{% else %}
+								<img src="{{asset('Yummy/assets/img/about-2.jpg')}}" class="img-fluid" alt="">
+								<a href="{{asset(about.vedioResto)}}" class="glightbox play-btn"></a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
+
+
 {% block message %}
 
 	{{ include('comment/_form.html.twig') }}
@@ -11,21 +94,21 @@
 
 
 {% block countUser %}
-			<section id="stats-counter" class="stats-counter" style="text-align: center;">
-    <div class="container" data-aos="zoom-out">
-        <div class="row gy-4">
-            <div class="col-lg-3 col-md-6" style="margin-left: 35%;">
-                <div class="stats-item text-center w-100 h-100">
-                    <span data-purecounter-start="0" data-purecounter-end="{{ users }}" data-purecounter-duration="1" class="purecounter"></span>
-                    <p>Clients</p>
-                </div>
-            </div>
-            <!-- End Stats Item -->
-        </div>
-    </div>
-</section>
+	<section id="stats-counter" class="stats-counter" style="text-align: center;">
+		<div class="container" data-aos="zoom-out">
+			<div class="row gy-4">
+				<div class="col-lg-3 col-md-6" style="margin-left: 35%;">
+					<div class="stats-item text-center w-100 h-100">
+						<span data-purecounter-start="0" data-purecounter-end="{{ users }}" data-purecounter-duration="1" class="purecounter"></span>
+						<p>Clients</p>
+					</div>
+				</div>
+				<!-- End Stats Item -->
+			</div>
+		</div>
+	</section>
 
-			{% endblock %}
+{% endblock %}
 
 
 {% block start %}
@@ -89,11 +172,11 @@
 {% endblock %}
 
 {% block comment %}
-		<div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
-			<div class="swiper-wrapper">
+	<div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
+		<div class="swiper-wrapper">
 			{% for c in comments %}
 				<div class="swiper-slide">
-				
+
 					<div class="testimonial-item">
 						<div class="row gy-4 justify-content-center">
 							<div class="col-lg-6">
@@ -110,7 +193,7 @@
 					</div>
 				</div>
 			{% endfor %}
-			</div>
-			<div class="swiper-pagination"></div>
 		</div>
+		<div class="swiper-pagination"></div>
+	</div>
 {% endblock %}

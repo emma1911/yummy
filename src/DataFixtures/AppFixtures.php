@@ -2,10 +2,12 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Admin;
+use Faker\Factory;
+use App\Entity\User;
+use App\Entity\Comment;
 use App\Entity\Fooditem;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
@@ -19,36 +21,48 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        // Create and persist an admin user
-        $admin = new Admin();
-        $admin->setFullName('Admin ADMINE');
-        $admin->setEmail('admin@gmail.com');
-        $admin->setPhone('23247623');
+        $faker = Factory::create('fr_FR');
 
-        // Set other properties as needed
+        // Create an admin user
+        $admin = new User();
+        $admin->setEmail($faker->email())
+            ->setPassword($this->passwordHasher->hashPassword($admin, "admin19112002"))
+            ->setRoles(['ROLE_ADMIN']);
         $manager->persist($admin);
 
-        // Generate food items associated with the admin
-        $this->generateFoodItems($manager, $admin);
+        // Create fake users
+        for ($i = 1; $i <= 5; $i++) {
+            $user = new User();
+            $user->setEmail($faker->email())
+                ->setPassword($this->passwordHasher->hashPassword($user, "user" . $i))
+                ->setRoles(['ROLE_USER']);
+            $manager->persist($user);
+        }
 
-        // Flush all changes to the database
-        $manager->flush();
-    }
+        // Create fake comments
+        for ($i = 1; $i <= 5; $i++) {
+            $comment = new Comment();
+            $comments = ['woooow', 'amazing', 'hahahaha', 'niiiiice'];
+            $comment->setMessage($comments[array_rand($comments)]);
+            $comment->setUser($user);
+            $manager->persist($comment);
+        }
 
-    private function generateFoodItems(ObjectManager $manager, Admin $admin): void
-    {
-        $imageNames = ['menu-item-1.png', 'menu-item-2.png', 'menu-item-3.png', 'menu-item-4.png', 'menu-item-5.png'];
-        $type = ['start', 'breakfast', 'lunch', 'dinner'];
-        $foodName = ['spagetti','soup'];
+        // Create food items
+        $imageNames = ['breakfast2.jpeg', 'breakfast.jpeg', 'dinner.png', 'dinner2.png', 'dinner3.png'];
+        $types = ['start', 'breakfast', 'lunch', 'dinner'];
+        $foodNames = ['Echbaa Barka', 'Sehr', 'Haja Lotf'];
         for ($i = 0; $i < 10; $i++) {
             $foodItem = new Fooditem();
-            $foodItem->setPhoto($imageNames[array_rand($imageNames)]);
-            $foodItem->setPrice(mt_rand(10, 50));
-            $foodItem->setDescription('Default description');
-            $foodItem->setType($type[array_rand($type)]);
-            $foodItem->setGerant($admin); // Associate the admin with the food item
-            $foodItem->setNameFood($foodName[array_rand($foodName)]);
+            $foodItem->setPhoto($imageNames[array_rand($imageNames)])
+                ->setPrice(mt_rand(10, 50))
+                ->setDescription('Default description')
+                ->setType($types[array_rand($types)])
+                ->setGerant($admin) // Set the admin as the gerant
+                ->setNameFood($foodNames[array_rand($foodNames)]);
             $manager->persist($foodItem);
         }
+
+        $manager->flush();
     }
 }

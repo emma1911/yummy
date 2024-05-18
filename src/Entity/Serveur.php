@@ -29,7 +29,7 @@ class Serveur
 
     #[ORM\ManyToOne(inversedBy: 'serveurs')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Admin $gerant = null;
+    private ?User $gerant = null;
 
     public function __construct()
     {
@@ -101,12 +101,12 @@ class Serveur
         return $this;
     }
 
-    public function getGerant(): ?Admin
+    public function getGerant(): ?User
     {
         return $this->gerant;
     }
 
-    public function setGerant(?Admin $gerant): static
+    public function setGerant(?User $gerant): static
     {
         $this->gerant = $gerant;
 

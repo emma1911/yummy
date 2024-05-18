@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\UserRepository;
+use App\Repository\AboutRepository;
 use App\Repository\CommentRepository;
 use App\Repository\FooditemRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -33,7 +34,7 @@ class CommentController extends AbstractController
     }
 
     #[Route('/', name: 'app_comment_index', methods: ['GET', 'POST'])]
-    public function new(UserRepository $userRepository,FooditemRepository $fooditemRepository,Request $request, EntityManagerInterface $entityManager, CommentRepository $commentRepository): Response
+    public function new(AboutRepository $aboutRepository,UserRepository $userRepository,FooditemRepository $fooditemRepository,Request $request, EntityManagerInterface $entityManager, CommentRepository $commentRepository): Response
     {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
@@ -63,7 +64,9 @@ class CommentController extends AbstractController
                                                         'itemBreakfast' => $itemBreakfast,
                                                         'itemLunch' => $itemLunch,
                                                         'itemDinner' => $itemDinner,
-                                                        'users' => $users]);
+                                                        'users' => $users,
+                                                        'abouts' => $aboutRepository->findAll(),
+                                                    ]);
     }
 
 
