@@ -3,6 +3,9 @@
 {% block title %}The Wise
 {% endblock %}
 
+{% block user_email %}
+	<li>{{email}}</li>
+{% endblock %}
 
 {% block about %}
 	{% for about in abouts %}
@@ -26,12 +29,12 @@
 						<p class="fst-italic">
 							Welcom to our restaurant here you can find all what you whant and the is some of our principal plats :
 						</p>
-							<ul>
-								<li>
-									<i class="bi bi-check2-all"></i>
-									{{ about.newFoodPlats }}
-								</li>
-							</ul>
+						<ul>
+							<li>
+								<i class="bi bi-check2-all"></i>
+								{{ about.newFoodPlats }}
+							</li>
+						</ul>
 						<p>
 							Hope that you like it.
 						</p>
@@ -60,12 +63,12 @@
 						<p class="fst-italic">
 							Welcom to our restaurant here you can find all what you whant and the is some of our principal plats :
 						</p>
-							<ul>
-								<li>
-									<i class="bi bi-check2-all"></i>
-									{{ about.newFoodPlats }}
-								</li>
-							</ul>
+						<ul>
+							<li>
+								<i class="bi bi-check2-all"></i>
+								{{ about.newFoodPlats }}
+							</li>
+						</ul>
 						<p>
 							Hope that you like it.
 						</p>

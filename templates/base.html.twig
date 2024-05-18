@@ -93,7 +93,11 @@
 									<a href="{{ path('app_login') }}">Login</a>
 								</li>
 							{% endif %}
-
+							{% block user_email %}
+								<li>
+									user email
+								</li>
+							{% endblock %}
 						</ul>
 					</nav>
 					<!-- .navbar -->

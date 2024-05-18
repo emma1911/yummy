@@ -57,6 +57,18 @@ class CommentController extends AbstractController
         $itemLunch = $fooditemRepository->findByTypeLunch();
         $itemDinner = $fooditemRepository->findByTypeDinner();
         $users = $userRepository->countUsers();
+
+        $user = $this->getUser();
+
+        // Check if a user is logged in
+        if ($user) {
+            // Get the email of the logged-in user
+            $email = $user->getUserIdentifier();
+        } else {
+            // User is not logged in, handle accordingly
+            $email = 'Guest';
+        }
+        
         return $this->render('comment/new.html.twig', ['comment' => $comment, 
                                                         'form' => $form, 
                                                         'comments' => $comments,
@@ -66,6 +78,7 @@ class CommentController extends AbstractController
                                                         'itemDinner' => $itemDinner,
                                                         'users' => $users,
                                                         'abouts' => $aboutRepository->findAll(),
+                                                        'email' => $email,
                                                     ]);
     }
 
