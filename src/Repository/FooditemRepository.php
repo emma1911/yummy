@@ -24,7 +24,7 @@ class FooditemRepository extends ServiceEntityRepository
     public function findByTypeStart(): array
     {
         return $this->createQueryBuilder('f')
-            ->select('f.photo', 'f.name_food', 'f.price', 'f.description')
+            ->select('f.id','f.photo', 'f.nameFood', 'f.price', 'f.description')
             ->where('f.type = :type')
             ->setParameter('type', 'start')
             ->getQuery()
@@ -34,7 +34,7 @@ class FooditemRepository extends ServiceEntityRepository
     public function findByTypeBreakfast(): array
     {
         return $this->createQueryBuilder('f')
-            ->select('f.photo', 'f.name_food', 'f.price', 'f.description')
+            ->select('f.id','f.photo', 'f.nameFood', 'f.price', 'f.description')
             ->where('f.type = :type')
             ->setParameter('type', 'breakfast')
             ->getQuery()
@@ -44,7 +44,7 @@ class FooditemRepository extends ServiceEntityRepository
     public function findByTypeLunch(): array
     {
         return $this->createQueryBuilder('f')
-            ->select('f.photo', 'f.name_food', 'f.price', 'f.description')
+            ->select('f.id','f.photo', 'f.nameFood', 'f.price', 'f.description')
             ->where('f.type = :type')
             ->setParameter('type', 'lunch')
             ->getQuery()
@@ -54,7 +54,7 @@ class FooditemRepository extends ServiceEntityRepository
     public function findByTypeDinner(): array
     {
         return $this->createQueryBuilder('f')
-            ->select('f.photo', 'f.name_food', 'f.price', 'f.description')
+            ->select('f.id','f.photo', 'f.nameFood', 'f.price', 'f.description')
             ->where('f.type = :type')
             ->setParameter('type', 'dinner')
             ->getQuery()

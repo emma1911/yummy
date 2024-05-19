@@ -11,7 +11,7 @@
 	{% for about in abouts %}
 		{% if is_granted('ROLE_ADMIN')%}
 			<center>
-                <a href="{{ path('app_about_edit', {'id': about.id}) }}" onclick="showEditAlert()">
+                <a href="{{ path('app_about_edit', {'id': about.id}) }}">
                     <button type="button" class="btn btn-danger">Edit about</button>
                 </a>
             </center>
@@ -116,28 +116,40 @@
 
 
 {% block start %}
-	<div class="row gy-5">
-		{% for item in itemStart %}
-			<div class="col-lg-4 menu-item">
-				<a href="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="glightbox"><img src="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="menu-img img-fluid" alt=""></a>
-				<h4>{{item.name_food}}</h4>
-				<p class="ingredients">{{item.description}}</p>
-				<p class="price">{{item.price}}$</p>
-			</div>
-		{% endfor %}
-		<!-- Menu Item -->
-	</div>
-
+<div class="row gy-5">
+    {% for item in fooditemsStart %}
+        <div class="col-lg-4 menu-item">
+            <a href="{{ asset('Yummy/assets/img/menu/' ~ item.photo) }}" class="glightbox">
+                <img src="{{ asset('Yummy/assets/img/menu/' ~ item.photo) }}" class="menu-img img-fluid" alt="">
+            </a>
+            <h4>{{ item.nameFood }}</h4>
+            <p class="ingredients">{{ item.description }}</p>
+            <p class="price">{{ item.price }}$</p>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('app_fooditem_edit', {'id': item.id}) }}">
+                    <button type="button" class="btn btn-danger">Edit</button>
+                </a>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <!-- Menu Item -->
+</div>
 {% endblock %}
+
 
 {% block breakfast %}
 	<div class="row gy-5">
 		{% for item in itemBreakfast %}
 			<div class="col-lg-4 menu-item">
 				<a href="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="glightbox"><img src="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="menu-img img-fluid" alt=""></a>
-				<h4>{{item.name_food}}</h4>
+				<h4>{{item.nameFood}}</h4>
 				<p class="ingredients">{{item.description}}</p>
 				<p class="price">{{item.price}}$</p>
+				{% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('app_fooditem_edit', {'id': item.id}) }}">
+                    <button type="button" class="btn btn-danger">Edit</button>
+                </a>
+            {% endif %}
 			</div>
 		{% endfor %}
 		<!-- Menu Item -->
@@ -150,9 +162,14 @@
 		{% for item in itemLunch %}
 			<div class="col-lg-4 menu-item">
 				<a href="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="glightbox"><img src="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="menu-img img-fluid" alt=""></a>
-				<h4>{{item.name_food}}</h4>
+				<h4>{{item.nameFood}}</h4>
 				<p class="ingredients">{{item.description}}</p>
 				<p class="price">{{item.price}}$</p>
+				{% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('app_fooditem_edit', {'id': item.id}) }}">
+                    <button type="button" class="btn btn-danger">Edit</button>
+                </a>
+            {% endif %}
 			</div>
 		{% endfor %}
 		<!-- Menu Item -->
@@ -165,9 +182,14 @@
 		{% for item in itemDinner %}
 			<div class="col-lg-4 menu-item">
 				<a href="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="glightbox"><img src="{{asset('Yummy/assets/img/menu/' ~ item.photo)}}" class="menu-img img-fluid" alt=""></a>
-				<h4>{{item.name_food}}</h4>
+				<h4>{{item.nameFood}}</h4>
 				<p class="ingredients">{{item.description}}</p>
 				<p class="price">{{item.price}}$</p>
+				{% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('app_fooditem_edit', {'id': item.id}) }}">
+                    <button type="button" class="btn btn-danger">Edit</button>
+                </a>
+            {% endif %}
 			</div>
 		{% endfor %}
 		<!-- Menu Item -->

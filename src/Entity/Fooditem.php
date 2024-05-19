@@ -30,7 +30,7 @@ class Fooditem
     private ?User $gerant = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name_food = null;
+    private ?string $nameFood = null;
 
     public function getId(): ?int
     {
@@ -41,12 +41,10 @@ class Fooditem
     {
         return $this->photo;
     }
-    
 
-    public function setPhoto(string $photo): static
+    public function setPhoto(string $photo): self
     {
         $this->photo = $photo;
-
         return $this;
     }
 
@@ -55,10 +53,9 @@ class Fooditem
         return $this->price;
     }
 
-    public function setPrice(float $price): static
+    public function setPrice(float $price): self
     {
         $this->price = $price;
-
         return $this;
     }
 
@@ -67,10 +64,9 @@ class Fooditem
         return $this->description;
     }
 
-    public function setDescription(string $description): static
+    public function setDescription(string $description): self
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -79,10 +75,9 @@ class Fooditem
         return $this->type;
     }
 
-    public function setType(string $type): static
+    public function setType(string $type): self
     {
         $this->type = $type;
-
         return $this;
     }
 
@@ -91,22 +86,20 @@ class Fooditem
         return $this->gerant;
     }
 
-    public function setGerant(?User $gerant): static
+    public function setGerant(?User $gerant): self
     {
         $this->gerant = $gerant;
-
         return $this;
     }
 
     public function getNameFood(): ?string
     {
-        return $this->name_food;
+        return $this->nameFood;
     }
 
-    public function setNameFood(string $name_food): static
+    public function setNameFood(string $nameFood): self
     {
-        $this->name_food = $name_food;
-
+        $this->nameFood = $nameFood;
         return $this;
     }
 }

@@ -78,6 +78,10 @@ class CommentController extends AbstractController
                                                         'itemDinner' => $itemDinner,
                                                         'users' => $users,
                                                         'abouts' => $aboutRepository->findAll(),
+                                                        'fooditemsStart' => $fooditemRepository->findByTypeStart(),
+                                                        'itemBreakfast' => $fooditemRepository->findByTypeBreakfast(),
+                                                        'itemLunch' => $fooditemRepository->findByTypeLunch(),
+                                                        'itemDinner' => $fooditemRepository->findByTypeDinner(),
                                                         'email' => $email,
                                                     ]);
     }
