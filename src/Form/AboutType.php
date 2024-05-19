@@ -13,7 +13,7 @@ class AboutType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('new_food_plats',TextareaType::class,)
+            ->add('new_food_plats',TextareaType::class)
             ->add('phone_number')
             ->add('vedio_resto');
     }

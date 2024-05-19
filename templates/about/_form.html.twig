@@ -1,4 +1,44 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<style>
+    .edit {
+        background-color: #F5A796;
+        padding: 20px;
+        margin: auto;
+        width: 50%;
+        border-radius: 10px;
+    }
+
+    form {
+        text-align: center;
+    }
+</style>
+<div class="edit">
+<div class="container">
+    {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.new_food_plats, null, {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.new_food_plats, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.phone_number, null, {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.phone_number, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        {% if form.vedio_resto is defined %}
+            <div class="form-group">
+                {{ form_label(form.vedio_resto, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.vedio_resto, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        {% endif %}
+        <br>
+        <br>
+        <button type="submit" class="btn btn-danger">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+</div>
+</div>
+
+
+    <br>
+        <br>
+        <br>
+        <br>
+
+

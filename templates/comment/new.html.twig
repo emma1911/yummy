@@ -11,12 +11,12 @@
 	{% for about in abouts %}
 		{% if is_granted('ROLE_ADMIN')%}
 			<center>
-				<a href="{{ path('app_about_edit', {'id': about.id}) }}">
-					<button type="button" class="btn btn-danger">Edit about</button>
-				</a>
-			</center>
-			<br>
-			<br>
+                <a href="{{ path('app_about_edit', {'id': about.id}) }}" onclick="showEditAlert()">
+                    <button type="button" class="btn btn-danger">Edit about</button>
+                </a>
+            </center>
+            <br>
+            <br>
 			<div class="row gy-4">
 				<div class="col-lg-7 position-relative about-img" style="background-image: url(Yummy/assets/img/about.jpg) ;" data-aos="fade-up" data-aos-delay="150">
 					<div class="call-us position-absolute">
@@ -87,6 +87,7 @@
 		{% endif %}
 	{% endfor %}
 {% endblock %}
+
 
 
 {% block message %}
