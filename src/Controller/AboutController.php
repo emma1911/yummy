@@ -6,10 +6,10 @@ use App\Entity\About;
 use App\Form\AboutType;
 use App\Repository\AboutRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/about')]
 class AboutController extends AbstractController
@@ -25,6 +25,9 @@ class AboutController extends AbstractController
     #[Route('/new', name: 'app_about_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_comment_index');
+        }
         $about = new About();
         $form = $this->createForm(AboutType::class, $about);
         $form->handleRequest($request);
@@ -53,6 +56,9 @@ class AboutController extends AbstractController
     #[Route('/{id}/edit', name: 'app_about_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, About $about, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_comment_index');
+        }
         $form = $this->createForm(AboutType::class, $about);
         $form->handleRequest($request);
 
@@ -66,16 +72,5 @@ class AboutController extends AbstractController
             'about' => $about,
             'form' => $form,
         ]);
-    }
-
-    #[Route('/{id}', name: 'app_about_delete', methods: ['POST'])]
-    public function delete(Request $request, About $about, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$about->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($about);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('app_about_index', [], Response::HTTP_SEE_OTHER);
     }
 }

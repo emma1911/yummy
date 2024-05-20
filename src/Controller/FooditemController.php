@@ -33,6 +33,9 @@ class FooditemController extends AbstractController
     #[Route('/new', name: 'app_fooditem_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_comment_index');
+        }
         $fooditem = new Fooditem();
         $form = $this->createForm(FooditemType::class, $fooditem);
         $form->handleRequest($request);
@@ -67,6 +70,9 @@ class FooditemController extends AbstractController
     #[Route('/{id}/edit', name: 'app_fooditem_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Fooditem $fooditem, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_comment_index');
+        }
         $form = $this->createForm(FooditemType::class, $fooditem);
         $form->handleRequest($request);
 
@@ -85,6 +91,9 @@ class FooditemController extends AbstractController
     #[Route('/{id}', name: 'app_fooditem_delete', methods: ['POST'])]
     public function delete(Request $request, Fooditem $fooditem, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_comment_index');
+        }
         if ($this->isCsrfTokenValid('delete'.$fooditem->getId(), $request->request->get('_token'))) {
             $entityManager->remove($fooditem);
             $entityManager->flush();
