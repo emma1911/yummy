@@ -14,13 +14,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/about')]
 class AboutController extends AbstractController
 {
-    #[Route('/', name: 'app_about_index', methods: ['GET'])]
+    /*#[Route('/', name: 'app_about_index', methods: ['GET'])]
     public function index(AboutRepository $aboutRepository): Response
     {
         return $this->render('about/index.html.twig', [
             'abouts' => $aboutRepository->findAll(),
         ]);
-    }
+    }*/
 
     #[Route('/new', name: 'app_about_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -45,13 +45,13 @@ class AboutController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_about_show', methods: ['GET'])]
+   /* #[Route('/{id}', name: 'app_about_show', methods: ['GET'])]
     public function show(About $about): Response
     {
         return $this->render('about/show.html.twig', [
             'about' => $about,
         ]);
-    }
+    }*/
 
     #[Route('/{id}/edit', name: 'app_about_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, About $about, EntityManagerInterface $entityManager): Response

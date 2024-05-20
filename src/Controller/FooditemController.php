@@ -22,13 +22,13 @@ class FooditemController extends AbstractController
         $this->security = $security;
     }
 
-    #[Route('/', name: 'app_fooditem_index', methods: ['GET'])]
+    /*#[Route('/', name: 'app_fooditem_index', methods: ['GET'])]
     public function index(FooditemRepository $fooditemRepository): Response
     {
         return $this->render('fooditem/index.html.twig', [
             'fooditems' => $fooditemRepository->findAll(),
         ]);
-    }
+    }*/
 
     #[Route('/new', name: 'app_fooditem_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -59,13 +59,13 @@ class FooditemController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_fooditem_show', methods: ['GET'])]
+    /*#[Route('/{id}', name: 'app_fooditem_show', methods: ['GET'])]
     public function show(Fooditem $fooditem): Response
     {
         return $this->render('fooditem/show.html.twig', [
             'fooditem' => $fooditem,
         ]);
-    }
+    }*/
 
     #[Route('/{id}/edit', name: 'app_fooditem_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Fooditem $fooditem, EntityManagerInterface $entityManager): Response
