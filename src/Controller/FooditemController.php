@@ -6,14 +6,22 @@ use App\Entity\Fooditem;
 use App\Form\FooditemType;
 use App\Repository\FooditemRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/fooditem')]
 class FooditemController extends AbstractController
 {
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
     #[Route('/', name: 'app_fooditem_index', methods: ['GET'])]
     public function index(FooditemRepository $fooditemRepository): Response
     {
@@ -30,10 +38,16 @@ class FooditemController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Set the currently authenticated user as the gerant
+            $user = $this->security->getUser();
+            if ($user !== null) {
+                $fooditem->setGerant($user);
+            }
+
             $entityManager->persist($fooditem);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_fooditem_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('fooditem/new.html.twig', [
@@ -76,6 +90,6 @@ class FooditemController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_fooditem_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
     }
 }
