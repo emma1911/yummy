@@ -16,17 +16,13 @@ class CommandType extends AbstractType
         $builder
             ->add('nb_people')
             ->add('message')
-            ->add('nb_table')
             ->add('date', null, [
                 'widget' => 'single_text',
             ])
             ->add('time', null, [
                 'widget' => 'single_text',
             ])
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
+
         ;
     }
 

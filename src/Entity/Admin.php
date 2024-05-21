@@ -25,16 +25,16 @@ class Admin
     #[ORM\Column]
     private ?int $phone = null;
 
-    #[ORM\OneToMany(targetEntity: Restoinformation::class, mappedBy: 'gerant')]
-    private Collection $restoinformations;
-
     #[ORM\OneToMany(targetEntity: Fooditem::class, mappedBy: 'gerant')]
     private Collection $fooditems;
 
+    #[ORM\OneToMany(targetEntity: Restoinformation::class, mappedBy: 'gerant')]
+    private Collection $restoinformations;
+
     public function __construct()
     {
-        $this->restoinformations = new ArrayCollection();
         $this->fooditems = new ArrayCollection();
+        $this->restoinformations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -79,6 +79,36 @@ class Admin
     }
 
     /**
+     * @return Collection<int, Fooditem>
+     */
+    public function getFooditems(): Collection
+    {
+        return $this->fooditems;
+    }
+
+    public function addFooditem(Fooditem $fooditem): static
+    {
+        if (!$this->fooditems->contains($fooditem)) {
+            $this->fooditems->add($fooditem);
+            $fooditem->setGerant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFooditem(Fooditem $fooditem): static
+    {
+        if ($this->fooditems->removeElement($fooditem)) {
+            // set the owning side to null (unless already changed)
+            if ($fooditem->getGerant() === $this) {
+                $fooditem->setGerant(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * @return Collection<int, Restoinformation>
      */
     public function getRestoinformations(): Collection
@@ -108,33 +138,5 @@ class Admin
         return $this;
     }
 
-    /**
-     * @return Collection<int, Fooditem>
-     */
-    public function getFooditems(): Collection
-    {
-        return $this->fooditems;
-    }
-
-    public function addFooditem(Fooditem $fooditem): static
-    {
-        if (!$this->fooditems->contains($fooditem)) {
-            $this->fooditems->add($fooditem);
-            $fooditem->setGerant($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFooditem(Fooditem $fooditem): static
-    {
-        if ($this->fooditems->removeElement($fooditem)) {
-            // set the owning side to null (unless already changed)
-            if ($fooditem->getGerant() === $this) {
-                $fooditem->setGerant(null);
-            }
-        }
-
-        return $this;
-    }
+    
 }

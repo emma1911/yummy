@@ -6,74 +6,85 @@
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 		<title>
-			{% block title %}Yummy{% endblock %}
+			{% block title %}Yummy
+			{% endblock %}
 		</title>
 		<meta content="" name="description">
-		<meta content="" name="keywords">
+		<meta
+		content="" name="keywords">
 
 		<!-- Favicons -->
 		<link href="{{asset('Yummy/assets/img/logo.png')}}" rel="icon">
-		<link href="{{asset('Yummy/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+		<link
+		href="{{asset('Yummy/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+		<link
+		href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
 		<!-- Vendor CSS Files -->
 		<link href="{{asset('Yummy/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 		<link href="{{asset('Yummy/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
 		<link href="{{asset('Yummy/assets/vendor/aos/aos.css')}}" rel="stylesheet">
 		<link href="{{asset('Yummy/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-		<link href="{{asset('Yummy/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+		<link
+		href="{{asset('Yummy/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
 		<!-- Template Main CSS File -->
-		<link href="{{asset('Yummy/assets/css/main.css')}}" rel="stylesheet">
-        {% block stylesheets %}
-        {% endblock %}
+		<link href="{{asset('Yummy/assets/css/main.css')}}" rel="stylesheet"> {% block stylesheets %}{% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-	<!-- =======================================================
-	  * Template Name: Yummy
-	  * Updated: Jan 30 2024 with Bootstrap v5.3.2
-	  * Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
-	  * Author: BootstrapMade.com
-	  * License: https://bootstrapmade.com/license/
-	  ======================================================== -->
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+		<!-- =======================================================
+					  * Template Name: Yummy
+					  * Updated: Jan 30 2024 with Bootstrap v5.3.2
+					  * Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
+					  * Author: BootstrapMade.com
+					  * License: https://bootstrapmade.com/license/
+					  ======================================================== -->
 	</head>
 
 	<body>
-        {% block body %}
-		<!-- ======= Header + navbar ======= -->
-		<header id="header" class="header fixed-top d-flex align-items-center">
-			<div class="container d-flex align-items-center justify-content-between">
+		{% block body %}
+			<!-- ======= Header + navbar ======= -->
+			<header id="header" class="header fixed-top d-flex align-items-center">
+				<div class="container d-flex align-items-center justify-content-between">
 
-				<a href="{{path('app_index')}}" class="logo d-flex align-items-center me-auto me-lg-0">
-					<!-- Uncomment the line below if you also wish to use an image logo -->
-					<img src="{{asset('Yummy/assets/img/logo.png')}}" alt=""   style="border-radius: 50%;"> 
-					<h1>{% block h1 %}The Wise{% endblock %}<span>.</span></h1>
-				</a>
+					<a
+						href="{{path('app_index')}}" class="logo d-flex align-items-center me-auto me-lg-0">
+						<!-- Uncomment the line below if you also wish to use an image logo -->
+						<img src="{{asset('Yummy/assets/img/logo.png')}}" alt="" style="border-radius: 50%;">
+						<h1>
+							{% block h1 %}The Wise
+							{% endblock %}
+							<span>.</span>
+						</h1>
+					</a>
 
-					<nav id="navbar" class="navbar"> <ul>
-						<li>
-							<a href="#hero">Home</a>
-						</li>
-						<li>
-							<a href="#about">About</a>
-						</li>
-						<li>
-							<a href="#menu">Menu</a>
-						</li>
-						<li>
-							<a href="#comments">Comments</a>
-						</li>
-						
-						<li>
-							<a href="#contact">Contact</a>
-						</li>
-						{% if app.user %}
+					<nav id="navbar" class="navbar">
+						<ul>
+							<li>
+								<a href="#hero">Home</a>
+							</li>
+							<li>
+								<a href="#about">About</a>
+							</li>
+							<li>
+								<a href="#menu">Menu</a>
+							</li>
+							<li>
+								<a href="#comments">Comments</a>
+							</li>
+
+							<li>
+								<a href="#contact">Contact</a>
+							</li>
+							{% if app.user %}
 								<li>
 									<a href="{{ path('app_logout') }}">Logout</a>
 								</li>
@@ -82,259 +93,246 @@
 									<a href="{{ path('app_login') }}">Login</a>
 								</li>
 							{% endif %}
-						
-					</ul>
-				</nav>
-				<!-- .navbar -->
+							{% block user_email %}
+								<li>
+									user email
+								</li>
+							{% endblock %}
+						</ul>
+					</nav>
+					<!-- .navbar -->
 
-				<a class="btn-book-a-table" href="#book-a-table">Book a Table</a>
-				<i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-				<i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+					<a class="btn-book-a-table" href="#book-a-table">Book a Table</a>
+					<i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+					<i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
-			</div>
-		</header>
-		<!-- End Header -->
-
-		<!-- ======= Hero Section ======= -->
-		<section id="hero" class="hero d-flex align-items-center section-bg">
-			<div class="container">
-				<div class="row justify-content-between gy-5">
-					<div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-						<h2 data-aos="fade-up">Enjoy Your Healthy<br>Delicious Food</h2>
-						<p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
-						<div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-							<a href="#book-a-table" class="btn-book-a-table">Book a Table</a>
-							<a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center">
-								<i class="bi bi-play-circle"></i>
-								<span>Watch Video</span>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
-						<img src="{{asset('Yummy/assets/img/hero-img.png')}}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
-					</div>
 				</div>
-			</div>
-		</section>
-		<!-- End Hero Section -->
+			</header>
+			<!-- End Header -->
 
-		<main
-			id="main">
-
-			<!-- ======= About Section ======= -->
-			<section id="about" class="about">
-				<div class="container" data-aos="fade-up">
-
-					<div class="section-header">
-						<h2>About Us</h2>
-						<p>Learn More
-							<span>About Us</span>
-						</p>
-					</div>
-
-					<div class="row gy-4">
-						<div class="col-lg-7 position-relative about-img" style="background-image: url(Yummy/assets/img/about.jpg) ;" data-aos="fade-up" data-aos-delay="150">
-							<div class="call-us position-absolute">
-								<h4>Book a Table</h4>
-								<p>+216 23 247 623</p>
+			<!-- ======= Hero Section ======= -->
+			<section id="hero" class="hero d-flex align-items-center section-bg">
+				<div class="container">
+					<div class="row justify-content-between gy-5">
+						<div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
+							<h2 data-aos="fade-up">Enjoy Your Healthy<br>Delicious Food</h2>
+							<p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
+							<div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+								<a href="#book-a-table" class="btn-book-a-table">Book a Table</a>
+								<a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center">
+									<i class="bi bi-play-circle"></i>
+									<span>Watch Video</span>
+								</a>
 							</div>
 						</div>
-						<div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
-							<div class="content ps-0 ps-lg-5">
-								<p class="fst-italic">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-									                magna aliqua.
-								</p>
-								<ul>
-									<li>
-										<i class="bi bi-check2-all"></i>
-										Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-									<li>
-										<i class="bi bi-check2-all"></i>
-										Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-									<li>
-										<i class="bi bi-check2-all"></i>
-										Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-								</ul>
-								<p>
-									Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-									                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-								</p>
-
-								<div class="position-relative mt-4">
-									<img src="{{asset('Yummy/assets/img/about-2.jpg')}}" class="img-fluid" alt="">
-									<a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
-								</div>
-							</div>
+						<div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
+							<img src="{{asset('Yummy/assets/img/hero-img.png')}}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
 						</div>
 					</div>
-
 				</div>
 			</section>
-			<!-- End About Section -->
+			<!-- End Hero Section -->
 
-			<!-- ======= Stats Counter Section client per day ======= -->
-			<section id="stats-counter" class="stats-counter" style ="text-aline:center;"v>
-				<div class="container" data-aos="zoom-out">
+			<main
+				id="main">
 
-					<div class="row gy-4" >
+				<!-- ======= About Section ======= -->
+				<section id="about" class="about">
+					<div class="container" data-aos="fade-up">
 
-						<div class="col-lg-3 col-md-6" style="margin-left:35%">
-							<div class="stats-item text-center w-100 h-100" >
-								<span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-								<p>Clients</p>
-							</div>
+						<div class="section-header">
+							<h2>About Us</h2>
+							<p>Learn More
+								<span>About Us</span>
+							</p>
 						</div>
-						<!-- End Stats Item -->
+						{% block about %}
+							<div class="row gy-4">
+								<div class="col-lg-7 position-relative about-img" style="background-image: url(Yummy/assets/img/about.jpg) ;" data-aos="fade-up" data-aos-delay="150">
+									<div class="call-us position-absolute">
+										<h4>Book a Table</h4>
+										<p>+216 23 247 623</p>
+									</div>
+								</div>
+								<div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
+									<div class="content ps-0 ps-lg-5">
+										<p class="fst-italic">
+											Welcom to our restaurant here you can find all what you whant and the is some of our principal plats :
+										</p>
+										<ul>
+											<li>
+												<i class="bi bi-check2-all"></i>
+												Ullamco laboris nisi ut aliquip ex ea commodo consequat.
+											</li>
+										</ul>
+										<p>
+											Hope that you like it.
+										</p>
 
+										<div class="position-relative mt-4">
+											<img src="{{asset('Yummy/assets/img/about-2.jpg')}}" class="img-fluid" alt="">
+											<a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endblock %}
 					</div>
+				</section>
+				<!-- End About Section -->
 
-				</div>
-			</section>
-			<!-- End Stats Counter Section -->
+				<!-- ======= Stats Counter Section client per day ======= -->
+				{% block countUser %}
+					<section id="stats-counter" class="stats-counter" style="text-aline:center;" v>
+						<div class="container" data-aos="zoom-out">
 
-			<!-- ======= Menu Section ======= -->
-			<section id="menu" class="menu">
-				<div class="container" data-aos="fade-up">
+							<div class="row gy-4">
 
-					<div class="section-header">
-						<h2>Our Menu</h2>
-						<p>Check Our
-							<span>Yummy Menu</span>
-						</p>
-					</div>
-
-					<!-- start tab nav item -->
-					<ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
-
-						<li class="nav-item">
-							<a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
-								<h4>Startes</h4>
-							</a>
-						</li>
-
-						<li class="nav-item">
-							<a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
-								<h4>Breakfast</h4>
-							</a><!-- End tab nav item --></li>
-							
-						<li class="nav-item">
-							<a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
-								<h4>Lunch</h4>
-							</a>
-						</li>
-
-						<li class="nav-item">
-							<a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
-								<h4>Dinner</h4>
-							</a>
-						</li>
-
-					</ul>
-					<!-- End tab nav item -->
-					
-					<div class="tab-content" data-aos="fade-up" data-aos-delay="300">
-						<!-- Starter Menu Content -->
-						<div class="tab-pane fade active show" id="menu-starters">
-
-							<div class="tab-header text-center">
-								<p>Menu</p>
-								<h3>Startes</h3>
-							</div>
-
-							<div class="row gy-5">
-
-								<div class="col-lg-4 menu-item">
-									<a href="{{asset('Yummy/assets/img/menu/menu-item-1.png')}}" class="glightbox"><img src="{{asset('Yummy/assets//img/menu/menu-item-1.png')}}" class="menu-img img-fluid" alt=""></a>
-									<h4>Magnam Tiste</h4>
-									<p class="ingredients">
-										description
-									</p>
-									<p class="price">
-										$5.95
-									</p>
+								<div class="col-lg-3 col-md-6" style="margin-left:35%">
+									<div class="stats-item text-center w-100 h-100">
+										<span data-purecounter-start="0" data-purecounter-end="200" data-purecounter-duration="1" class="purecounter"></span>
+										<p>Clients</p>
+									</div>
 								</div>
-								<!-- Menu Item -->
+								<!-- End Stats Item -->
+
 							</div>
+
 						</div>
-						<!-- End Starter Menu Content -->
-						
-						<!-- Breakfast Menu Content -->
-						<div class="tab-pane fade" id="menu-breakfast">
+					</section>
+				{% endblock %}
+				<!-- End Stats Counter Section -->
 
-							<div class="tab-header text-center">
-								<p>Menu</p>
-								<h3>Breakfast</h3>
-							</div>
+				<!-- ======= Menu Section ======= -->
+				<section id="menu" class="menu">
+					<div class="container" data-aos="fade-up">
 
-							<div class="row gy-5">
-
-								<div class="col-lg-4 menu-item">
-									<a href="{{asset('Yummy/assets/img/menu/menu-item-1.png')}}" class="glightbox"><img src="{{asset('Yummy/assets//img/menu/menu-item-1.png')}}" class="menu-img img-fluid" alt=""></a>
-									<h4>Magnam Tiste</h4>
-									<p class="ingredients">
-										Lorem, deren, trataro, filede, nerada
-									</p>
-									<p class="price">
-										$5.90
-									</p>
-								</div>
-								<!-- Menu Item -->
-
-							</div>
+						<div class="section-header">
+							<h2>Our Menu</h2>
+							<p>Check Our
+								<span>Yummy Menu</span>
+							</p>
 						</div>
-						<!-- End Breakfast Menu Content -->
 
-						<!-- Lunch Menu Content -->
-						<div class="tab-pane fade" id="menu-lunch">
+						<!-- start tab nav item -->
+						<ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
 
-							<div class="tab-header text-center">
-								<p>Menu</p>
-								<h3>Lunch</h3>
-							</div>
+							<li class="nav-item">
+								<a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
+									<h4>Startes</h4>
+								</a>
+							</li>
 
-							<div class="row gy-5">
+							<li class="nav-item">
+								<a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
+									<h4>Breakfast</h4>
+								</a><!-- End tab nav item --></li>
 
-								<div class="col-lg-4 menu-item" >
-									<a href="{{asset('Yummy/assets/img/menu/menu-item-4.png')}}" class="glightbox"><img src="{{asset('Yummy/assets//img/menu/menu-item-4.png')}}" class="menu-img img-fluid" alt=""></a>
-									<h4>Eos Luibusdam</h4>
-									<p class="ingredients">
-										Lorem, deren, trataro, filede, nerada
-									</p>
-									<p class="price">
-										$12.95
-									</p>
+							<li class="nav-item">
+								<a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
+									<h4>Lunch</h4>
+								</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
+									<h4>Dinner</h4>
+								</a>
+							</li>
+
+						</ul>
+						<!-- End tab nav item -->
+
+						<div
+							class="tab-content" data-aos="fade-up" data-aos-delay="300">
+							<!-- Starter Menu Content -->
+							<div class="tab-pane fade active show" id="menu-starters">
+
+								<div class="tab-header text-center">
+									<p>Menu</p>
+									<h3>Startes</h3>
 								</div>
-								<!-- Menu Item -->
-
-								
-
-								
+								{% block start %}
+									<div class="row gy-5">
+										<div class="col-lg-4 menu-item">
+											<a href="{{asset('Yummy/assets/img/menu/menu-item-1.png')}}" class="glightbox"><img src="{{asset('Yummy/assets//img/menu/menu-item-1.png')}}" class="menu-img img-fluid" alt=""></a>
+											<h4>Magnam Tiste</h4>
+											<p class="ingredients">description</p>
+											<p class="price">$5.95</p>
+										</div>
+										<!-- Menu Item -->
+									</div>
+								{% endblock %}
 
 							</div>
-						</div>
-						<!-- End Lunch Menu Content -->
+							<!-- End Starter Menu Content -->
 
-						<!-- Dinner Menu Content -->
-						<div class="tab-pane fade" id="menu-dinner">
+							<!-- Breakfast Menu Content -->
+							<div class="tab-pane fade" id="menu-breakfast">
 
-							<div class="tab-header text-center">
-								<p>Menu</p>
-								<h3>Dinner</h3>
-							</div>
-						
-								<div class="col-lg-4 menu-item">
-									<a href="{{asset('Yummy/assets/img/menu/menu-item-2.png')}}" class="glightbox"><img src="{{asset('Yummy/assets//img/menu/menu-item-2.png')}}" class="menu-img img-fluid" alt=""></a>
-									<h4>Aut Luia</h4>
-									<p class="ingredients">
-										Lorem, deren, trataro, filede, nerada
-									</p>
-									<p class="price">
-										$14.90
-									</p>
+								<div class="tab-header text-center">
+									<p>Menu</p>
+									<h3>Breakfast</h3>
 								</div>
-								<!-- Menu Item -->
-								
+
+								{% block breakfast %}
+									<div class="row gy-5">
+										<div class="col-lg-4 menu-item">
+											<a href="{{asset('Yummy/assets/img/menu/menu-item-1.png')}}" class="glightbox"><img src="{{asset('Yummy/assets//img/menu/menu-item-1.png')}}" class="menu-img img-fluid" alt=""></a>
+											<h4>Magnam Tiste</h4>
+											<p class="ingredients">description</p>
+											<p class="price">$5.95</p>
+										</div>
+										<!-- Menu Item -->
+									</div>
+								{% endblock %}
+
+							</div>
+							<!-- End Breakfast Menu Content -->
+
+							<!-- Lunch Menu Content -->
+							<div class="tab-pane fade" id="menu-lunch">
+
+								<div class="tab-header text-center">
+									<p>Menu</p>
+									<h3>Lunch</h3>
+								</div>
+
+								{% block lunch %}
+									<div class="row gy-5">
+										<div class="col-lg-4 menu-item">
+											<a href="{{asset('Yummy/assets/img/menu/menu-item-1.png')}}" class="glightbox"><img src="{{asset('Yummy/assets//img/menu/menu-item-1.png')}}" class="menu-img img-fluid" alt=""></a>
+											<h4>Magnam Tiste</h4>
+											<p class="ingredients">description</p>
+											<p class="price">$5.95</p>
+										</div>
+										<!-- Menu Item -->
+									</div>
+								{% endblock %}
+
+							</div>
+							<!-- End Lunch Menu Content -->
+
+							<!-- Dinner Menu Content -->
+							<div class="tab-pane fade" id="menu-dinner">
+
+								<div class="tab-header text-center">
+									<p>Menu</p>
+									<h3>Dinner</h3>
+								</div>
+
+								{% block dinner %}
+									<div class="row gy-5">
+										<div class="col-lg-4 menu-item">
+											<a href="{{asset('Yummy/assets/img/menu/menu-item-1.png')}}" class="glightbox"><img src="{{asset('Yummy/assets//img/menu/menu-item-1.png')}}" class="menu-img img-fluid" alt=""></a>
+											<h4>Magnam Tiste</h4>
+											<p class="ingredients">description</p>
+											<p class="price">$5.95</p>
+										</div>
+										<!-- Menu Item -->
+									</div>
+								{% endblock %}
+
 							</div>
 						</div>
 						<!-- End Dinner Menu Content -->
@@ -345,7 +343,7 @@
 			</section>
 			<!-- End Menu Section -->
 
-			{% block command %}
+			
 			<!-- ======= Book A Table Section (formular)======= -->
 			<section id="book-a-table" class="book-a-table">
 				<div class="container" data-aos="fade-up">
@@ -358,8 +356,8 @@
 					<div class="row g-0">
 						<div class="col-lg-4 reservation-img" style="background-image: url(Yummy/assets/img/reservation.jpg);" data-aos="zoom-out" data-aos-delay="200"></div>
 						<div class="col-lg-8 d-flex align-items-center reservation-form-bg">
-							
-							<form action="forms/book-a-table.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+							{% block command %}
+							<form  method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
 								<div class="row gy-4">								
 									<div class="col-lg-4 col-md-6">
 										<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
@@ -392,26 +390,27 @@
 									<div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
 								</div>
 								{% if app.user %}
-
-										<div class="text-center">
+									<div class="text-center">
+										<button type="submit">Book a Table</button>
+									</div>
+								{% else %}
+									<div class="text-center">
+										<a href="{{ path('app_login') }}">
 											<button type="submit">Book a Table</button>
-										</div>
-									{% else %}
-										<div class="text-center">
-											<a href="{{ path('app_login') }}"><button type="submit">Book a Table</button></a>
-										</div>
-									{% endif %}
+										</a>
+									</div>
+								{% endif %}
 							</form>
-							
+							{% endblock %}
 						</div>
 						<!-- End Reservation Form -->
 					</div>
 				</div>
 			</section>
 			<!-- End Book A Table Section -->
-			{% endblock %}
+			
 			<!-- ======= Comment Section ======= -->
-			{% block comment %}
+
 			<section id="comments" class="gallery section-bg">
 				<div class="container" data-aos="fade-up">
 					<div class="section-header">
@@ -419,29 +418,32 @@
 						<p>What Are They
 							<span>Saying About us</span>
 						</p>
-					</div>	
-					<div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<div class="testimonial-item">
-									<div class="row gy-4 justify-content-center">
-										<div class="col-lg-6">
-											<div class="testimonial-content">
-												<p>
-													<i class="bi bi-quote quote-icon-left"></i>
-													<i class="bi bi-quote quote-icon-right"></i>
-												</p>
+					</div>
+					{% block comment %}
+						<div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="testimonial-item">
+										<div class="row gy-4 justify-content-center">
+											<div class="col-lg-6">
+												<div class="testimonial-content">
+													<p>
+														<i class="bi bi-quote quote-icon-left"></i>
+														<i class="bi bi-quote quote-icon-right"></i>
+													</p>
+													<h5></h5>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+							<div class="swiper-pagination"></div>
 						</div>
-						<div class="swiper-pagination"></div>
-					</div>
+					{% endblock %}
+
 				</div>
 			</section>
-			{% endblock %}
 			<!-- End Comment Section -->
 
 			<!-- ======= Contact Section ======= -->
@@ -513,125 +515,98 @@
 
 					</div>
 					{% block message %}
-					<form action="forms/contact.php" method="post" role="form" class="php-email-form p-3 p-md-4">
-						<div class="form-group">
-							<textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-						</div>
-						<div class="my-3">
-							<div class="loading">Loading</div>
-							<div class="error-message"></div>
-							<div class="sent-message">Your message has been sent. Thank you!</div>
-						</div>
-						<div class="text-center">
-							<button type="submit">Send Message</button>
-						</div>
-					</form>
+						<form action="forms/contact.php" method="post" role="form" class="php-email-form p-3 p-md-4">
+							<div class="form-group">
+								<textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+							</div>
+							<div class="my-3">
+								<div class="loading">Loading</div>
+								<div class="error-message"></div>
+								<div class="sent-message">Your message has been sent. Thank you!</div>
+							</div>
+							<div class="text-center">
+								<button type="submit">Send Message</button>
+							</div>
+						</form>
 					{% endblock %}
 					<!--End Contact Form -->
 
 				</div>
 			</section>
 			<!-- End Contact Section -->
-
-		</main>
-		<!-- End #main -->
-		{% endblock %}
-		
-		<!-- ======= Footer ======= -->
-		<footer id="footer" class="footer">
-			<div class="container">
-				<div class="row gy-3">
-					<div class="col-lg-3 col-md-6 d-flex">
-						<i class="bi bi-geo-alt icon"></i>
-						<div>
-							<h4>Address</h4>
-							<p>
-								Avenue hadj ali soua
-								<br>
-								Ksar Hellal, Monastir, Tunisia<br>
-							</p>
-						</div>
-
-					</div>
-
-					<div class="col-lg-3 col-md-6 footer-links d-flex">
-						<i class="bi bi-telephone icon"></i>
-						<div>
-							<h4>Reservations</h4>
-							<p>
-								<strong>Phone:</strong>
-								+216 52 555 400<br>
-								<strong>Email:</strong>
-								thewiserestaurantandbrunch@gmail.com<br>
-							</p>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-6 footer-links d-flex">
-						<i class="bi bi-clock icon"></i>
-						<div>
-							<h4>Opening Hours</h4>
-							<p>
-								<strong>Mon-Sat: 11AM</strong>
-								- 23PM<br>
-								Sunday: Closed
-							</p>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-6 footer-links">
-						<h4>Follow Us</h4>
-						<div class="social-links d-flex">
-							<a href="{{asset('https://www.facebook.com/profile.php?id=100058908593379')}}" class="facebook">
-								<i class="bi bi-facebook"></i>
-							</a>
-							<a href="{{asset('https://www.instagram.com/the_wise_restaurant/')}}" class="instagram">
-								<i class="bi bi-instagram"></i>
-							</a>
-							
-						</div>
-					</div>
-
-				</div>
+		</body>
+	</html>
+</main>
+<!-- End #main -->{% endblock %}<!-- ======= Footer ======= --><footer id="footer" class="footer">
+<div class="container">
+	<div class="row gy-3">
+		<div class="col-lg-3 col-md-6 d-flex">
+			<i class="bi bi-geo-alt icon"></i>
+			<div>
+				<h4>Address</h4>
+				<p>
+					Avenue hadj ali soua
+					<br>
+					Ksar Hellal, Monastir, Tunisia<br>
+				</p>
 			</div>
 
-			<div class="container">
-				<div class="copyright">
-					&copy; Copyright
-					<strong>
-						<span>Yummy</span>
-					</strong>. All Rights Reserved
-				</div>
-				<div class="credits">
-					<!-- All the links in the footer should remain intact. -->
-					<!-- You can delete the links only if you purchased the pro version. -->
-					<!-- Licensing information: https://bootstrapmade.com/license/ -->
-					<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/ -->
-					Designed by<a href="https://bootstrapmade.com/"> BootstrapMade</a>
-				</div>
+		</div>
+
+		<div class="col-lg-3 col-md-6 footer-links d-flex">
+			<i class="bi bi-telephone icon"></i>
+			<div>
+				<h4>Reservations</h4>
+				<p>
+					<strong>Phone:</strong>
+					+216 52 555 400<br>
+					<strong>Email:</strong>
+					thewiserestaurantandbrunch@gmail.com<br>
+				</p>
 			</div>
+		</div>
 
-		</footer>
-		<!-- End Footer -->
-		
+		<div class="col-lg-3 col-md-6 footer-links d-flex">
+			<i class="bi bi-clock icon"></i>
+			<div>
+				<h4>Opening Hours</h4>
+				<p>
+					<strong>Mon-Sat: 11AM</strong>
+					- 23PM<br>
+					Sunday: Closed
+				</p>
+			</div>
+		</div>
 
-		<a href="#" class="scroll-top d-flex align-items-center justify-content-center">
-			<i class="bi bi-arrow-up-short"></i>
-		</a>
+		<div class="col-lg-3 col-md-6 footer-links">
+			<h4>Follow Us</h4>
+			<div class="social-links d-flex">
+				<a href="{{asset('https://www.facebook.com/profile.php?id=100058908593379')}}" class="facebook">
+					<i class="bi bi-facebook"></i>
+				</a>
+				<a href="{{asset('https://www.instagram.com/the_wise_restaurant/')}}" class="instagram">
+					<i class="bi bi-instagram"></i>
+				</a>
 
-		<div id="preloader"></div>
+			</div>
+		</div>
 
-		<!-- Vendor JS Files -->
-		<script src="{{asset('Yummy/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-		<script src="{{asset('Yummy/assets/vendor/aos/aos.js')}}"></script>
-		<script src="{{asset('Yummy/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
-		<script src="{{asset('Yummy/assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
-		<script src="{{asset('Yummy/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-		<script src="{{asset('Yummy/assets/vendor/php-email-form/validate.js')}}"></script>
+	</div>
+</div>
 
-		<!-- Template Main JS File -->
-		<script src="{{asset('Yummy/assets/js/main.js')}}"></script>
-    
-	</body>
-
-</html>
+<div class="container">
+	<div class="copyright">
+		&copy; Copyright
+		<strong>
+			<span>Yummy</span>
+		</strong>. All Rights Reserved
+	</div>
+	<div class="credits"><!-- All the links in the footer should remain intact. -->
+		<!-- You can delete the links only if you purchased the pro version. -->
+		<!-- Licensing information: https://bootstrapmade.com/license/ -->
+		<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/ -->
+		Designed by
+			<a href="https://bootstrapmade.com/"> BootstrapMade</a>
+	</div>
+</div></footer><!-- End Footer --><a href="#" class="scroll-top d-flex align-items-center justify-content-center">
+<i class="bi bi-arrow-up-short"></i></a><div id="preloader"></div><!-- Vendor JS Files --><script src="{{asset('Yummy/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script><script src="{{asset('Yummy/assets/vendor/aos/aos.js')}}"></script><script src="{{asset('Yummy/assets/vendor/glightbox/js/glightbox.min.js')}}"></script><script src="{{asset('Yummy/assets/vendor/purecounter/purecounter_vanilla.js')}}"></script><script src="{{asset('Yummy/assets/vendor/swiper/swiper-bundle.min.js')}}"></script><script src="{{asset('Yummy/assets/vendor/php-email-form/validate.js')}}"></script><!-- Template Main JS File --><script src="{{asset('Yummy/assets/js/main.js')}}"></script></body></html>

@@ -2,9 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Command;
 use App\Entity\Comment;
+use App\Form\CommandType;
 use App\Form\CommentType;
+use App\Repository\UserRepository;
+use App\Repository\AboutRepository;
 use App\Repository\CommentRepository;
+use App\Repository\FooditemRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
@@ -31,7 +36,7 @@ class CommentController extends AbstractController
     }
 
     #[Route('/', name: 'app_comment_index', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, CommentRepository $commentRepository): Response
+    public function new(AboutRepository $aboutRepository,UserRepository $userRepository,FooditemRepository $fooditemRepository,Request $request, EntityManagerInterface $entityManager, CommentRepository $commentRepository): Response
     {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
@@ -48,8 +53,49 @@ class CommentController extends AbstractController
 
             return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
         }
+        $command = new Command();
+        $form2 = $this->createForm(CommandType::class, $command);
+        $form2->handleRequest($request);
+
+        if ($form2->isSubmitted() && $form2->isValid()) {
+            $user = $this->security->getUser();
+            // Set the user of the command
+            $command->setUser($user);
+            $entityManager->persist($command);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
+        }
         $comments = $commentRepository->getNameCommentUser();
-        return $this->render('comment/new.html.twig', ['comment' => $comment, 'form' => $form, 'comments' => $comments]);
+        $itemStart = $fooditemRepository->findByTypeStart();
+        $itemBreakfast = $fooditemRepository->findByTypeBreakfast();
+        $itemLunch = $fooditemRepository->findByTypeLunch();
+        $itemDinner = $fooditemRepository->findByTypeDinner();
+        $users = $userRepository->countUsers();
+
+        $user = $this->getUser();
+
+        // Check if a user is logged in
+        if ($user) {
+            // Get the email of the logged-in user
+            $email = $user->getUserIdentifier();
+        } else {
+            // User is not logged in, handle accordingly
+            $email = 'Guest';
+        }
+        
+        return $this->render('comment/new.html.twig', ['comment' => $comment, 
+                                                        'form' => $form, 
+                                                        'form2' => $form2, 
+                                                        'comments' => $comments,
+                                                        'itemStart' => $itemStart, 
+                                                        'itemBreakfast' => $itemBreakfast,
+                                                        'itemLunch' => $itemLunch,
+                                                        'itemDinner' => $itemDinner,
+                                                        'users' => $users,
+                                                        'abouts' => $aboutRepository->findAll(),
+                                                        'email' => $email,
+                                                    ]);
     }
 
 

@@ -22,9 +22,6 @@ class Command
     #[ORM\Column(length: 255)]
     private ?string $message = null;
 
-    #[ORM\Column]
-    private ?int $nb_table = null;
-
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
@@ -60,18 +57,6 @@ class Command
     public function setMessage(string $message): static
     {
         $this->message = $message;
-
-        return $this;
-    }
-
-    public function getNbTable(): ?int
-    {
-        return $this->nb_table;
-    }
-
-    public function setNbTable(int $nb_table): static
-    {
-        $this->nb_table = $nb_table;
 
         return $this;
     }

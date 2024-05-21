@@ -25,6 +25,9 @@ class Fooditem
     #[ORM\Column(length: 255)]
     private ?string $type = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $name_food = null;
+
     #[ORM\ManyToOne(inversedBy: 'fooditems')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Admin $gerant = null;
@@ -38,6 +41,7 @@ class Fooditem
     {
         return $this->photo;
     }
+    
 
     public function setPhoto(string $photo): static
     {
@@ -82,12 +86,24 @@ class Fooditem
         return $this;
     }
 
+    public function getNameFood(): ?string
+    {
+        return $this->name_food;
+    }
+
+    public function setNameFood(string $name_food): static
+    {
+        $this->name_food = $name_food;
+
+        return $this;
+    }
+
     public function getGerant(): ?Admin
     {
         return $this->gerant;
     }
 
-    public function setGerant(?Admin $gerant): static
+    public function setGerant(?User $gerant): static
     {
         $this->gerant = $gerant;
 
