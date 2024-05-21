@@ -2,26 +2,30 @@
 
 namespace App\Form;
 
-use App\Entity\About;
+use App\Entity\Fooditem;
+use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class AboutType extends AbstractType
+class FooditemType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('new_food_plats',TextareaType::class)
-            ->add('phone_number')
-            ->add('vedio_resto');
+            ->add('photo')
+            ->add('price')
+            ->add('description')
+            ->add('type')
+            ->add('nameFood')
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => About::class,
+            'data_class' => Fooditem::class,
         ]);
     }
 }

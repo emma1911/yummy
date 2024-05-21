@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Fooditem{% endblock %}
+
+{% block body %}
+    <center><h1>Edit Fooditem</h1></center>
+
+    {{ include('fooditem/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}
