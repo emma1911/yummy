@@ -1,10 +1,13 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {% if app.user %}
-        <button class="btn">{{ button_label|default('Save') }}</button>
-    {{ form_end(form) }}
+{{ form_widget(form) }}
+{% if app.user %}
+	<div class="text-center">
+		<button class="btn">{{ button_label|default('Command') }}</button>
+	</div>
+	{{ form_end(form) }}
 {% else %}
 	<div class="alert alert-danger" role="alert">
-		You must be logged in to send a Command.
+		You must be logged in to have a command.
 		<a href="{{path('app_login')}}">Login<a/>
-	</div>
+		</div>
+{% endif %}
