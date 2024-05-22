@@ -86,7 +86,7 @@ class CommentController extends AbstractController
         
         return $this->render('comment/new.html.twig', ['comment' => $comment, 
                                                         'form' => $form, 
-                                                        'form2' => $form2, 
+                                                        'form2' => $form2,
                                                         'comments' => $comments,
                                                         'itemStart' => $itemStart, 
                                                         'itemBreakfast' => $itemBreakfast,
@@ -104,8 +104,8 @@ class CommentController extends AbstractController
 
 
     
-/*
-   #[Route('/{id}', name: 'app_comment_show', methods: ['GET'])]
+
+   /* #[Route('/{id}', name: 'app_comment_show', methods: ['GET'])]
     public function show(Comment $comment): Response
     {
         return $this->render('comment/show.html.twig', [

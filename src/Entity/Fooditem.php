@@ -28,10 +28,6 @@ class Fooditem
     #[ORM\Column(length: 255)]
     private ?string $nameFood = null;
 
-    #[ORM\ManyToOne(inversedBy: 'fooditems')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Admin $gerant = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -80,7 +76,7 @@ class Fooditem
         $this->type = $type;
         return $this;
     }
-    
+
     public function getNameFood(): ?string
     {
         return $this->nameFood;
@@ -89,18 +85,6 @@ class Fooditem
     public function setNameFood(string $nameFood): self
     {
         $this->nameFood = $nameFood;
-        return $this;
-    }
-
-    public function getGerant(): ?Admin
-    {
-        return $this->gerant;
-    }
-
-    public function setGerant(?User $gerant): static
-    {
-        $this->gerant = $gerant;
-
         return $this;
     }
 }

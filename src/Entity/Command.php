@@ -22,15 +22,15 @@ class Command
     #[ORM\Column(length: 255)]
     private ?string $message = null;
 
+    #[ORM\ManyToOne(inversedBy: 'commands')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTimeInterface $time = null;
-
-    #[ORM\ManyToOne(inversedBy: 'commands')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
 
     public function getId(): ?int
     {

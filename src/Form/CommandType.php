@@ -22,7 +22,6 @@ class CommandType extends AbstractType
             ->add('time', null, [
                 'widget' => 'single_text',
             ])
-
         ;
     }
 
