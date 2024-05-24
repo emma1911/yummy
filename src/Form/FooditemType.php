@@ -2,12 +2,13 @@
 
 namespace App\Form;
 
-use App\Entity\Fooditem;
 use App\Entity\User;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Fooditem;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class FooditemType extends AbstractType
 {
@@ -17,9 +18,14 @@ class FooditemType extends AbstractType
             ->add('photo')
             ->add('price')
             ->add('description')
-            ->add('type')
-            ->add('nameFood')
-            ;
+            ->add('type', ChoiceType::class, [
+                'choices' => [
+                    'Starts' => 'starts',
+                    'Breakfast' => 'breakfast',
+                    'Lunch' => 'lunch',
+                    'Dinner' => 'dinner',
+                ],])
+            ->add('nameFood');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
