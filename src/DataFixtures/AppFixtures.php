@@ -24,11 +24,16 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
 
         // Create an admin user
+       
+
+        for ($i = 1; $i <= 3; $i++){
         $admin = new User();
         $admin->setEmail($faker->email())
-            ->setPassword($this->passwordHasher->hashPassword($admin, "admin19112002"))
+            ->setPassword($this->passwordHasher->hashPassword($admin, "admin".$i))
             ->setRoles(['ROLE_ADMIN']);
         $manager->persist($admin);
+
+        }
 
         // Create fake users
         for ($i = 1; $i <= 5; $i++) {
@@ -58,7 +63,7 @@ class AppFixtures extends Fixture
                 ->setPrice(mt_rand(10, 50))
                 ->setDescription('Default description')
                 ->setType($types[array_rand($types)])
-                ->setGerant($admin) // Set the admin as the gerant
+                ->setUser($admin) // Set the admin as the gerant
                 ->setNameFood($foodNames[array_rand($foodNames)]);
             $manager->persist($foodItem);
         }

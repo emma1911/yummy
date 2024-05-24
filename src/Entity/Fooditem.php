@@ -28,6 +28,10 @@ class Fooditem
     #[ORM\Column(length: 255)]
     private ?string $nameFood = null;
 
+    #[ORM\ManyToOne(inversedBy: 'fooditems')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +89,18 @@ class Fooditem
     public function setNameFood(string $nameFood): self
     {
         $this->nameFood = $nameFood;
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
         return $this;
     }
 }

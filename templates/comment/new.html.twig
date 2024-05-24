@@ -127,30 +127,29 @@
 
 
 {% block start %}
-	<div class="row gy-5">
-		{% for item in fooditemsStart %}
-			<div class="col-lg-4 menu-item">
-				<a href="{{ asset('Yummy/assets/img/menu/' ~ item.photo) }}" class="glightbox">
-					<img src="{{ asset('Yummy/assets/img/menu/' ~ item.photo) }}" class="menu-img img-fluid" alt="">
-				</a>
-				<h4>{{ item.nameFood }}</h4>
-				<p class="ingredients">{{ item.description }}</p>
-				<p class="price">{{ item.price }}$</p>
-				{% if is_granted('ROLE_ADMIN') %}
-					<form method="post" action="{{ path('app_fooditem_delete', {'id': item.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-    					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ item.id) }}">
-    					<button class="btn btn-danger" >Delete</button>
-						<a href="{{ path('app_fooditem_edit', {'id': item.id}) }}">
-						<button type="button" class="btn btn-danger">Edit</button>
-					</a>
-					</form>
-
-				{% endif %}
-			</div>
-		{% endfor %}
-		<!-- Menu Item -->
-	</div>
+    <div class="row gy-5">
+        {% for item in fooditemsStart %}
+                <div class="col-lg-4 menu-item">
+                    <a href="{{ asset('Yummy/assets/img/menu/' ~ item.photo) }}" class="glightbox">
+                        <img src="{{ asset('Yummy/assets/img/menu/' ~ item.photo) }}" class="menu-img img-fluid" alt="">
+                    </a>
+                    <h4>{{ item.nameFood }}</h4>
+                    <p class="ingredients">{{ item.description }}</p>
+                    <p class="price">{{ item.price }}$</p>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <form method="post" action="{{ path('app_fooditem_delete', {'id': item.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ item.id) }}">
+                            <button class="btn btn-danger" >Delete</button>
+                            <a href="{{ path('app_fooditem_edit', {'id': item.id}) }}">
+                                <button type="button" class="btn btn-danger">Edit</button>
+                            </a>
+                        </form>
+                    {% endif %}
+                </div>
+        {% endfor %}
+    </div>
 {% endblock %}
+
 
 
 {% block breakfast %}

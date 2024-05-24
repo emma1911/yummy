@@ -44,7 +44,7 @@ class FooditemController extends AbstractController
             // Set the currently authenticated user as the gerant
             $user = $this->security->getUser();
             if ($user !== null) {
-                $fooditem->setGerant($user);
+                $fooditem->setUser($user);
             }
 
             $entityManager->persist($fooditem);

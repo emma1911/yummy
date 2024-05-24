@@ -12,7 +12,7 @@ class MainController extends AbstractController
     #[Route('/', name: 'app_index')]
     public function index(FooditemRepository $fooditemRepository): Response
     {
-        $items = $fooditemRepository->findByTypeStart();
+        $items = $fooditemRepository->findByTypeStart($this->getUser()->getUserIdentifier());
         return $this->render('main/index.html.twig',['controller_name' => 'MainController','items' => $items]);
     }
 
@@ -21,7 +21,7 @@ class MainController extends AbstractController
     {
         $comments = $commentRepository->getNameCommentUser();
         //dd($comments);
-        return $this->render('main/index.html.twig',['controller_name' => 'MainController', 'comments' => $comments]);
-    }*/
-
+        return $this->render('main/index.html.twig',['controller_name' => 'MainController']);
+    }
+*/
 }

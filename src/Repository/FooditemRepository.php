@@ -30,6 +30,19 @@ class FooditemRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    
+    /*public function findByTypeStart($userId): array
+    {
+        return $this->createQueryBuilder('f')
+            ->select('f.id','f.photo', 'f.nameFood', 'f.price', 'f.description')
+            ->leftJoin('f.user', 'u')
+            ->where('f.type = :type')
+            ->andWhere('u.id = :userId')
+            ->setParameter('type', 'start')
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult();
+    }*/
 
     public function findByTypeBreakfast(): array
     {
