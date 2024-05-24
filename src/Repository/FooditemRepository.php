@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\Fooditem;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Fooditem>
@@ -31,19 +32,55 @@ class FooditemRepository extends ServiceEntityRepository
             ->getResult();
     }
     
-    /*public function findByTypeStart($userId): array
+    public function findByTypeStartAndUser(User $user): array
     {
         return $this->createQueryBuilder('f')
-            ->select('f.id','f.photo', 'f.nameFood', 'f.price', 'f.description')
-            ->leftJoin('f.user', 'u')
+            ->select('f.id', 'f.photo', 'f.nameFood', 'f.price', 'f.description')
             ->where('f.type = :type')
-            ->andWhere('u.id = :userId')
+            ->andWhere('f.user = :user')
             ->setParameter('type', 'start')
-            ->setParameter('userId', $userId)
+            ->setParameter('user', $user)
             ->getQuery()
             ->getResult();
-    }*/
+    }
 
+    public function findByTypeBreakfastAndUser(User $user): array
+    {
+        return $this->createQueryBuilder('f')
+            ->select('f.id', 'f.photo', 'f.nameFood', 'f.price', 'f.description')
+            ->where('f.type = :type')
+            ->andWhere('f.user = :user')
+            ->setParameter('type', 'breakfast')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
+
+
+    public function findByTypeLunchAndUser(User $user): array
+    {
+        return $this->createQueryBuilder('f')
+            ->select('f.id', 'f.photo', 'f.nameFood', 'f.price', 'f.description')
+            ->where('f.type = :type')
+            ->andWhere('f.user = :user')
+            ->setParameter('type', 'lunch')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByTypeDinnerAndUser(User $user): array
+    {
+        return $this->createQueryBuilder('f')
+            ->select('f.id', 'f.photo', 'f.nameFood', 'f.price', 'f.description')
+            ->where('f.type = :type')
+            ->andWhere('f.user = :user')
+            ->setParameter('type', 'dinner')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
+    
     public function findByTypeBreakfast(): array
     {
         return $this->createQueryBuilder('f')
