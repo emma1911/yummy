@@ -20,7 +20,7 @@ class FooditemType extends AbstractType
             ->add('description')
             ->add('type', ChoiceType::class, [
                 'choices' => [
-                    'Starts' => 'starts',
+                    'Start' => 'start',
                     'Breakfast' => 'breakfast',
                     'Lunch' => 'lunch',
                     'Dinner' => 'dinner',

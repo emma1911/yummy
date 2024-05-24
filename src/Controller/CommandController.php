@@ -25,6 +25,9 @@ class CommandController extends AbstractController
     #[Route('/new', name: 'app_command_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('app_comment_index');
+        }
         $command = new Command();
         $form = $this->createForm(CommandType::class, $command);
         $form->handleRequest($request);
