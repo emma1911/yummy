@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FooditemRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: FooditemRepository::class)]
@@ -103,4 +105,5 @@ class Fooditem
 
         return $this;
     }
+
 }

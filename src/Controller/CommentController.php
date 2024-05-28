@@ -27,14 +27,15 @@ class CommentController extends AbstractController
         $this->security = $security;
     }
 
-    #[Route('/theWise', name: 'app_comment_index', methods: ['GET', 'POST'])]
+    #[Route('/theWise', name: 'app_comment_index',methods: ['GET', 'POST'])]
 public function new(
     AboutRepository $aboutRepository,
     UserRepository $userRepository,
     FooditemRepository $fooditemRepository,
     Request $request,
     EntityManagerInterface $entityManager,
-    CommentRepository $commentRepository
+    CommentRepository $commentRepository,
+    
 ): Response {
     // Check if the user is authenticated
     $user = $this->security->getUser();
@@ -111,8 +112,10 @@ public function new(
         'abouts' => $abouts,
         'email' => $email,
     ]);
-}
 
+    
+}
+    
 
 #[Route('/saadana', name: 'app_comment_saadana', methods: ['GET', 'POST'])]
 public function saadana(
@@ -121,7 +124,8 @@ public function saadana(
     FooditemRepository $fooditemRepository,
     Request $request,
     EntityManagerInterface $entityManager,
-    CommentRepository $commentRepository
+    CommentRepository $commentRepository,
+    
 ): Response {
     // Check if the user is authenticated
     $user = $this->security->getUser();

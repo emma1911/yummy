@@ -181,6 +181,7 @@
 							<button type="button" class="btn btn-danger">Edit</button>
 						</a>
 					</form>
+
 				{% endif %}
 			</div>
 		{% endfor %}
@@ -227,11 +228,11 @@
 					<form method="post" action="{{ path('app_fooditem_delete', {'id': item.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
 						<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ item.id) }}">
 						<button class="btn btn-danger">Delete</button>
-						<a href="{{ path('app_fooditem_edit', {'id': item.id}) }}">
+						<a href="{{ path('app_fooditem_edit', {'id': item.id})}}">
 							<button type="button" class="btn btn-danger">Edit</button>
 						</a>
 					</form>
-				{% endif %}
+					{% endif %}
 			</div>
 		{% endfor %}
 		<!-- Menu Item -->
@@ -249,10 +250,12 @@
 					<div class="form-group">
 						{{ form_label(form2.nb_people, null, {'label_attr': {'class': 'control-label'}}) }}
 						{{ form_widget(form2.nb_people, {'attr': {'class': 'form-control'}}) }}
+						{{ form_errors(form2.nb_people) }}
 					</div>
 					<div class="form-group">
 						{{ form_label(form2.date, null, {'label_attr': {'class': 'control-label'}}) }}
 						{{ form_widget(form2.date, {'attr': {'class': 'form-control'}}) }}
+						{{ form_errors(form2.date) }}
 					</div>
 					<div class="form-group">
 						{{ form_label(form2.message, null, {'label_attr': {'class': 'control-label'}}) }}
@@ -281,7 +284,6 @@
 		</div>
 	</div>
 {% endblock %}
-
 
 {% block comment %}
 	<div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">

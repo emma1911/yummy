@@ -3,10 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\CommandRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CommandRepository::class)]
 class Command
@@ -17,6 +16,11 @@ class Command
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Assert\Range(
+        min: 1,
+        max: 20,
+        notInRangeMessage: 'The number of people must be between {{ min }} and {{ max }}.',
+    )]
     private ?int $nb_people = null;
 
     #[ORM\Column(length: 255)]
