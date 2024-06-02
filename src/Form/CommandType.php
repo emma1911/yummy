@@ -2,18 +2,15 @@
 
 namespace App\Form;
 
-use DateError;
-use DateException;
-use App\Entity\User;
 use App\Entity\Command;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
+use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 
 class CommandType extends AbstractType
 {
@@ -32,6 +29,10 @@ class CommandType extends AbstractType
                     new GreaterThanOrEqual([
                         'value' => (new \DateTime())->setTime(0, 0, 0),
                         'message' => 'The date must be today or in the future.',
+                    ]),
+                    new LessThanOrEqual([
+                        'value' => (new \DateTime('last day of December'))->setTime(23, 59, 59),
+                        'message' => 'The date must be within the current year.',
                     ]),
                 ],
             ])

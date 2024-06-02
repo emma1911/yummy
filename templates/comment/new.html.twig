@@ -266,8 +266,7 @@
                         {{ form_widget(form2.time, {'attr': {'class': 'form-control'}}) }}
                         {{ form_errors(form2.time) }}
                     </div>
-                    <br>
-                    <br>
+                    <br><br>
                     <center>
                         {% if app.user %}
                             <button type="submit" class="btn btn-danger">{{ button_label|default('Command') }}</button>
@@ -285,6 +284,7 @@
         </div>
     </div>
 {% endblock %}
+
 
 
 {% block comment %}
