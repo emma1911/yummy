@@ -67,14 +67,12 @@ public function new(
     $form2 = $this->createForm(CommandType::class, $command);
     $form2->handleRequest($request);
 
-    // Handle command form submission
     if ($form2->isSubmitted() && $form2->isValid()) {
-        // Set the user of the command
-        $command->setUser($user);
+        $command->setUser($this->getUser());
         $entityManager->persist($command);
         $entityManager->flush();
 
-        return $this->redirectToRoute('app_comment_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_comment_index');
     }
 
     // Retrieve comments
@@ -102,7 +100,7 @@ public function new(
     return $this->render('comment/new.html.twig', [
         'comment' => $comment,
         'form' => $form,
-        'form2' => $form2,
+        'form2' => $form2->createView(),
         'comments' => $comments,
         'itemStart' => $itemStart,
         'itemBreakfast' => $itemBreakfast,

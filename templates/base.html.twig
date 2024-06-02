@@ -89,7 +89,7 @@
 							</li>
 							{% if is_granted('ROLE_ADMIN') %}
 								<li>
-									<a href="{{ path('app_command_index') }}">Les commandes</a>
+									<a href="{{ path('app_command_index') }}">commands</a>
 								</li>
 							{% endif %}
 							{% if app.user %}
@@ -113,11 +113,14 @@
 						</ul>
 					</nav>
 					<!-- .navbar -->
+					{% if is_granted('ROLE_ADMIN') %}
 
+					{% else %}
+						
 					<a class="btn-book-a-table" href="#book-a-table">Book a Table</a>
 					<i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
 					<i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
+					{% endif %}
 				</div>
 			</header>
 			<!-- End Header -->
@@ -351,6 +354,8 @@
 			<!-- End Menu Section -->
 		
 			<!-- ======= Book A Table Section (formular)======= -->
+			{% if is_granted('ROLE_ADMIN') %}
+			{% else %}
 			<section id="book-a-table" class="book-a-table">
 				<div class="container" data-aos="fade-up">
 					<div class="section-header">
@@ -413,6 +418,7 @@
 					</div>
 				</div>
 			</section>
+			{% endif %}
 			<!-- End Book A Table Section -->
 
 			<!-- ======= Comment Section ======= -->
@@ -519,6 +525,8 @@
 						<!-- End Info Item -->
 
 					</div>
+					{% if is_granted('ROLE_ADMIN') %}
+					{% else %}
 					{% block message %}
 						<form action="forms/contact.php" method="post" role="form" class="php-email-form p-3 p-md-4">
 							<div class="form-group">
@@ -534,6 +542,7 @@
 							</div>
 						</form>
 					{% endblock %}
+					{% endif %}
 					<!--End Contact Form -->
 
 				</div>
